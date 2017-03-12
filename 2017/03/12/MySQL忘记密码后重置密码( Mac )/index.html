@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://weitimes.github.io">
-  <title>Archives: 2017 | Ye Wei&#39;s blog</title>
+  <title>Ye Wei&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="MySQL忘记密码后重置密码( Mac )​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
+​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Ye Wei's blog">
-<meta property="og:url" content="https://weitimes.github.io/archives/2017/index.html">
+<meta property="og:url" content="https://weitimes.github.io/2017/03/12/MySQL忘记密码后重置密码( Mac )/index.html">
 <meta property="og:site_name" content="Ye Wei's blog">
+<meta property="og:description" content="MySQL忘记密码后重置密码( Mac )​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
+​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉">
+<meta property="og:updated_time" content="2017-03-12T07:33:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ye Wei's blog">
+<meta name="twitter:description" content="MySQL忘记密码后重置密码( Mac )​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
+​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉">
   
     <link rel="alternative" href="/atom.xml" title="Ye Wei&#39;s blog" type="application/atom+xml">
   
@@ -149,139 +156,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MySQL忘记密码后重置密码( Mac )" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="MySQL忘记密码后重置密码-Mac"><a href="#MySQL忘记密码后重置密码-Mac" class="headerlink" title="MySQL忘记密码后重置密码( Mac )"></a>MySQL忘记密码后重置密码( Mac )</h1><p>​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。</p>
+<p>​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。给自己点赞。不多说了，一步一步跟我走。</p>
+<ol>
+<li>关闭MySQL服务器</li>
+</ol>
+<p><code>sudo /usr/local/mysql/support-files/mysql.server stop</code></p>
+<p>或者</p>
+<p>在偏好设置里点击MySQL然后将其关闭</p>
+<ol>
+<li>进入MySQL的二进制命令目录下</li>
+</ol>
+<p><code>cd /usr/local/mysql/bin</code></p>
+<ol>
+<li>获取MySQL操作权限</li>
+</ol>
+<p><code>cd /usr/local/mysql/bin</code></p>
+<ol>
+<li>重启MySQL服务器</li>
+</ol>
+<p><code>./mysqld_safe --skip-grant-tables</code></p>
+<ol>
+<li>重开个终端</li>
+</ol>
+<hr>
+<p>为了在中点可以使用MySQL的命令，需要配置一下，运行下面两条命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias mysql=/usr/local/mysql/bin/mysql</div><div class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladmin</div></pre></td></tr></table></figure>
+<ol>
+<li>输入mysql 进入mysql命令模式</li>
+<li>输入use mysql 进入mysql数据库</li>
+<li>输入flush privileges 获取修改密码的权限</li>
+<li>输入set password for ‘root’@’localhost’=password(‘新密码’) 修改密码</li>
+<li>恭喜你，密码修改成功</li>
+<li>使用新密码登录</li>
+</ol>
+<p><code>mysql -u root -p</code></p>
+<p>回车后输入新密码</p>
+<p><a href="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=8fe78e62" target="_blank" rel="external"></a></p>
+<p>出现上面这个就说明成功登录MySQL</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/12/MySQL忘记密码后重置密码( Mac )/" class="archive-article-date">
-  	<time datetime="2017-03-12T07:33:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-12</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://weitimes.github.io/2017/03/12/MySQL忘记密码后重置密码( Mac )/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/09/SourceTreePost/" class="archive-article-date">
-  	<time datetime="2017-03-09T10:06:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-09</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/09/SourceTreePost/" class="archive-article-date">
-  	<time datetime="2017-03-09T10:02:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-09</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2017/03/09/SourceTreePost/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/05/hello/" class="archive-article-date">
-  	<time datetime="2017-03-05T08:24:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/05/hello/">hello</a>
-    </h1>
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/05/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-05T08:16:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/05/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -304,8 +332,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
