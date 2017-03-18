@@ -17,7 +17,7 @@
 <meta property="og:description" content="MySQL忘记密码后重置密码( Mac )​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
 ​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉">
 <meta property="og:image" content="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&v=8fe78e62">
-<meta property="og:updated_time" content="2017-03-12T07:40:00.000Z">
+<meta property="og:updated_time" content="2017-03-13T09:17:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ye Wei's blog">
 <meta name="twitter:description" content="MySQL忘记密码后重置密码( Mac )​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
@@ -178,7 +178,7 @@
 <ol>
 <li>获取MySQL操作权限</li>
 </ol>
-<p><code>cd /usr/local/mysql/bin</code></p>
+<p><code>sudo su</code></p>
 <ol>
 <li>重启MySQL服务器</li>
 </ol>
@@ -187,8 +187,10 @@
 <li>重开个终端</li>
 </ol>
 <hr>
-<p>为了在中点可以使用MySQL的命令，需要配置一下，运行下面两条命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias mysql=/usr/local/mysql/bin/mysql</div><div class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladmin</div></pre></td></tr></table></figure>
+<p>为了在终端可以使用MySQL的命令，需要配置一下，运行下面两条命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias mysql=/usr/local/mysql/bin/mysql</div><div class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladminx</div></pre></td></tr></table></figure>
+<p>使用这种方法进行配置，一旦终端关闭了，就又得重新配置了，最好的方法是将MySQL的bin目录加入系统PATH，我用的终端是zsh，所以讲命令配置在.zshrc，如果是其他终端，修改的是相应的文件( 例如：bash -&gt; ./.bashrc )</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">打开.zshrc, 添加 export PATH=$PATH:/usr/local/mysql/bin</div><div class="line">执行命令 source ./.zshrc</div></pre></td></tr></table></figure>
 <ol>
 <li>输入mysql 进入mysql命令模式</li>
 <li>输入use mysql 进入mysql数据库</li>
@@ -293,6 +295,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/03/12/如何在MAC终端使用MySQL？/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
   
   
     <a href="/2017/03/09/SourceTreePost/" id="article-nav-older" class="article-nav-link-wrap">
