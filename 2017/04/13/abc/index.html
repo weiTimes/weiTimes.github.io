@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>MySQL忘记密码后重置密码( Mac ) | Ye Wei&#39;s blog</title>
+    <title>Mac 生成 ssh-key | Ye Wei&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Ye Wei">
     
-    <meta name="description" content="​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
-​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，">
+    <meta name="description" content="用Git下载代码得步骤1.首先需要创建公钥，在命令行中输入：
+1ssh-keygen -t rsa -C &amp;quot;ben@xxx.com&amp;quot;
+然后输入路径，密码之类的，如果不输入，工程就会保存到根目录下面，密码也为空。
+1~/.ssh/id_rsa是私钥，~/.ssh/id_rsa.pu">
     
     
     
@@ -66,15 +68,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2014/05/07/abc/" title="MySQL忘记密码后重置密码( Mac )" itemprop="url">MySQL忘记密码后重置密码( Mac )</a>
+      <a href="/2017/04/13/abc/" title="Mac 生成 ssh-key" itemprop="url">Mac 生成 ssh-key</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://weiTimes.github.io" title="Ye Wei">Ye Wei</a>
     </p>
   <p class="article-time">
-    <time datetime="2014-05-07T10:44:12.000Z" itemprop="datePublished">2014-05-07</time>
-    更新日期:<time datetime="2017-04-01T14:12:11.000Z" itemprop="dateModified">2017-04-01</time>
+    <time datetime="2017-04-13T14:20:26.000Z" itemprop="datePublished">2017-04-13</time>
+    更新日期:<time datetime="2017-04-13T14:27:03.000Z" itemprop="dateModified">2017-04-13</time>
     
   </p>
 </header>
@@ -86,53 +88,22 @@
 		
 		</div>
 		
-		<p>​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。</p>
-<p>​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。给自己点赞。不多说了，一步一步跟我走。</p>
-<ol>
-<li>关闭MySQL服务器</li>
-</ol>
-<p><code>sudo /usr/local/mysql/support-files/mysql.server stop</code></p>
-<p>或者</p>
-<p>在偏好设置里点击MySQL然后将其关闭</p>
-<ol>
-<li>进入MySQL的二进制命令目录下</li>
-</ol>
-<p><code>cd /usr/local/mysql/bin</code></p>
-<ol>
-<li>获取MySQL操作权限</li>
-</ol>
-<p><code>sudo su</code></p>
-<ol>
-<li>重启MySQL服务器</li>
-</ol>
-<p><code>./mysqld_safe --skip-grant-tables</code></p>
-<ol>
-<li>重开个终端</li>
-</ol>
-<hr>
-<p>为了在终端可以使用MySQL的命令，需要配置一下，运行下面两条命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias mysql=/usr/local/mysql/bin/mysql</div><div class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladminx</div></pre></td></tr></table></figure>
-<p>使用这种方法进行配置，一旦终端关闭了，就又得重新配置了，最好的方法是将MySQL的bin目录加入系统PATH，我用的终端是zsh，所以讲命令配置在.zshrc，如果是其他终端，修改的是相应的文件( 例如：bash -&gt; ./.bashrc )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">打开.zshrc, 添加 export PATH=$PATH:/usr/local/mysql/bin</div><div class="line">执行命令 source ./.zshrc</div></pre></td></tr></table></figure>
-<ol>
-<li>输入mysql 进入mysql命令模式</li>
-<li>输入use mysql 进入mysql数据库</li>
-<li>输入flush privileges 获取修改密码的权限</li>
-<li>输入set password for ‘root’@’localhost’=password(‘新密码’) 修改密码</li>
-<li>恭喜你，密码修改成功</li>
-<li>使用新密码登录</li>
-</ol>
-<p><code>mysql -u root -p</code></p>
-<p>回车后输入新密码</p>
-<p><img src="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=8fe78e62" alt=""></p>
-<p>出现上面这个就说明成功登录MySQL</p>
+		<p>用Git下载代码得步骤<br>1.首先需要创建公钥，在命令行中输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;ben@xxx.com&quot;</div></pre></td></tr></table></figure>
+<p>然后输入路径，密码之类的，如果不输入，工程就会保存到根目录下面，密码也为空。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~/.ssh/id_rsa是私钥，~/.ssh/id_rsa.pub是公钥</div></pre></td></tr></table></figure>
+<p>2.接着打开公钥：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+<p>这里会得到一段很长的编码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuYZIchz3THIcc/wH0ZB5WZYqe2iBVUNqSzfrgxBvJCZkFHWiUZhA/4omNud/27PVT/FADV9qSvrX7ifP05Cbl6mhE4uJjxOQRNoPdQQcsTEFh5vDvOeiJOT1CoFb9WLGg49Xml4yJmFJqv/Kz5hCe7LEWRYJH6tmaVG0qi9nwAZmjfTQpSWu07eAKB9wAbK6stCdnd5JvMq7IsNNylbwDlXf0RQA4RpppO+14oNBqivhi5ftBPjP15+aWKpnXUxkGMVAefKTvwsyw1T0H2sj+ILVFM4d5xpxu3jPHebqh363OwPPLMsoUy9VhQ3YDtMxt4vyOxvpJ9ekMGlDn/9ut linwenbang@yolanda.hk</div></pre></td></tr></table></figure>
+<p>然后在进入GitLab或者Gitblit的个人中心，选择ssh key的配置，将新生成的ssh-key复制进去即可，配置完成之后即可克隆你想要克隆的项目了</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/MySQL/">MySQL</a>
+  <span></span> <a href="/tags/Mac/">Mac</a><a href="/tags/Git/">Git</a>
   </div>
 
 
@@ -145,7 +116,7 @@
 
 <div class="article-share" id="share">
 
-  <div data-url="https://weiTimes.github.io/2014/05/07/abc/" data-title="MySQL忘记密码后重置密码( Mac ) | Ye Wei&#39;s blog" data-tsina="null" class="share clearfix">
+  <div data-url="https://weiTimes.github.io/2017/04/13/abc/" data-title="Mac 生成 ssh-key | Ye Wei&#39;s blog" data-tsina="null" class="share clearfix">
   </div>
 
 </div>
@@ -154,14 +125,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2014/05/07/abc/" title="在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</span>
+
+<div class="next">
+<a href="/2017/04/05/学习资源与路径/"  title="">
+ <strong>NEXT:</strong><br/> 
+ <span>(no title)
+</span>
 </a>
 </div>
-
 
 </nav>
 
