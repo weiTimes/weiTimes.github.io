@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Ye Wei&#39;s blog</title>
-  <subtitle>Forever young, forever hot tears</subtitle>
+  <subtitle>所见、所感、所想</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://weiTimes.github.io/"/>
@@ -236,6 +236,65 @@
   </entry>
   
   <entry>
+    <title>在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</title>
+    <link href="https://weiTimes.github.io/2014/05/07/abc/"/>
+    <id>https://weiTimes.github.io/2014/05/07/abc/</id>
+    <published>2014-05-07T10:44:12.000Z</published>
+    <updated>2017-04-01T14:12:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="启动Apache"><a href="#启动Apache" class="headerlink" title="启动Apache"></a>启动Apache</h2><ol>
+<li>Mac OS自带Apache, 只需要启动Apache就可以了</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apachectl start</div></pre></td></tr></table></figure>
+<p>介绍另外几个命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apachectl restart //重启Apache服务</div><div class="line">sudo apachectl stop //停止Apache服务</div><div class="line">httpd -v //查看Apache版本</div></pre></td></tr></table></figure>
+<ol>
+<li>打开浏览器，在地址栏输入localhost, 出现It Works, 就说明已经成功启动</li>
+</ol>
+<p><img src="https://d3dr1ze7164817.cloudfront.net/items/0Z2x0c3O020X2t1e1D2T/Image%202017-03-12%20at%206.07.37%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=5a0a2a76" alt=""></p>
+<ol>
+<li>进入Apache的网站服务器根目录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /Library/WebServer/Documents</div></pre></td></tr></table></figure>
+<ol>
+<li>Mac OS 同样自带PHP，只需要在Apache的配置文件中添加Apache对PHP的支持就好了</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/apache2/httpd.conf //打开文件</div><div class="line"></div><div class="line">#LoadModule php5_module libexec/apache2/libphp5.so //去掉注释(前面的 # 号)</div></pre></td></tr></table></figure>
+<ol>
+<li>重启Apache服务器</li>
+<li>在/Library/WebServer/Documents下新建php文件，例如test.php</li>
+<li>在浏览器中输入 localhost/test.php, 如果出现预期的结果，恭喜你！</li>
+</ol>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
+<li>启动MySQL的安全模式，可以免登录名和密码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mysqld --skip-grant-tables</div></pre></td></tr></table></figure>
+<ul>
+<li>使用root用户[免密码]登录MySQL</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div><div class="line"></div><div class="line">输入密码时直接回车</div></pre></td></tr></table></figure>
+<ul>
+<li>解决MAC下PHP连接MYSQL错误Warning: mysql_connect(): No such file or directory in conn.php</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /var/mysql</div><div class="line">sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;启动Apache&quot;&gt;&lt;a href=&quot;#启动Apache&quot; class=&quot;headerlink&quot; title=&quot;启动Apache&quot;&gt;&lt;/a&gt;启动Apache&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Mac OS自带Apache, 只需要启动Apache就可以了&lt;/li&gt;
+&lt;/o
+    
+    </summary>
+    
+      <category term="技术" scheme="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="MySQL" scheme="https://weiTimes.github.io/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MySQL忘记密码后重置密码( Mac )</title>
     <link href="https://weiTimes.github.io/2014/05/07/abc/"/>
     <id>https://weiTimes.github.io/2014/05/07/abc/</id>
@@ -288,65 +347,6 @@
     
       &lt;p&gt;​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。&lt;/p&gt;
 &lt;p&gt;​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝
-    
-    </summary>
-    
-      <category term="技术" scheme="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="MySQL" scheme="https://weiTimes.github.io/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</title>
-    <link href="https://weiTimes.github.io/2014/05/07/abc/"/>
-    <id>https://weiTimes.github.io/2014/05/07/abc/</id>
-    <published>2014-05-07T10:44:12.000Z</published>
-    <updated>2017-04-01T14:12:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="启动Apache"><a href="#启动Apache" class="headerlink" title="启动Apache"></a>启动Apache</h2><ol>
-<li>Mac OS自带Apache, 只需要启动Apache就可以了</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apachectl start</div></pre></td></tr></table></figure>
-<p>介绍另外几个命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apachectl restart //重启Apache服务</div><div class="line">sudo apachectl stop //停止Apache服务</div><div class="line">httpd -v //查看Apache版本</div></pre></td></tr></table></figure>
-<ol>
-<li>打开浏览器，在地址栏输入localhost, 出现It Works, 就说明已经成功启动</li>
-</ol>
-<p><img src="https://d3dr1ze7164817.cloudfront.net/items/0Z2x0c3O020X2t1e1D2T/Image%202017-03-12%20at%206.07.37%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=5a0a2a76" alt=""></p>
-<ol>
-<li>进入Apache的网站服务器根目录</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /Library/WebServer/Documents</div></pre></td></tr></table></figure>
-<ol>
-<li>Mac OS 同样自带PHP，只需要在Apache的配置文件中添加Apache对PHP的支持就好了</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/apache2/httpd.conf //打开文件</div><div class="line"></div><div class="line">#LoadModule php5_module libexec/apache2/libphp5.so //去掉注释(前面的 # 号)</div></pre></td></tr></table></figure>
-<ol>
-<li>重启Apache服务器</li>
-<li>在/Library/WebServer/Documents下新建php文件，例如test.php</li>
-<li>在浏览器中输入 localhost/test.php, 如果出现预期的结果，恭喜你！</li>
-</ol>
-<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
-<li>启动MySQL的安全模式，可以免登录名和密码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mysqld --skip-grant-tables</div></pre></td></tr></table></figure>
-<ul>
-<li>使用root用户[免密码]登录MySQL</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div><div class="line"></div><div class="line">输入密码时直接回车</div></pre></td></tr></table></figure>
-<ul>
-<li>解决MAC下PHP连接MYSQL错误Warning: mysql_connect(): No such file or directory in conn.php</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /var/mysql</div><div class="line">sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;启动Apache&quot;&gt;&lt;a href=&quot;#启动Apache&quot; class=&quot;headerlink&quot; title=&quot;启动Apache&quot;&gt;&lt;/a&gt;启动Apache&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;Mac OS自带Apache, 只需要启动Apache就可以了&lt;/li&gt;
-&lt;/o
     
     </summary>
     
