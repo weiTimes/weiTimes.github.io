@@ -92,21 +92,39 @@
 
 
 
-<meta name="description" content="​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
-​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造">
+<meta name="description" content="启动Apache
+Mac OS自带Apache, 只需要启动Apache就可以了
+
+1sudo apachectl start
+介绍另外几个命令
+123sudo apachectl restart //重启Apache服务sudo apachectl stop //停止Apache服务httpd -v //查看Apache版本
+
+打开浏览器，在地址栏输入localhost, 出现It Works,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL忘记密码后重置密码( Mac )">
+<meta property="og:title" content="在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用">
 <meta property="og:url" content="https://weiTimes.github.io/2014/05/07/abc/index.html">
 <meta property="og:site_name" content="Ye Wei's blog">
-<meta property="og:description" content="​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
-​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造">
-<meta property="og:image" content="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&v=8fe78e62">
-<meta property="og:updated_time" content="2017-04-01T14:12:11.000Z">
+<meta property="og:description" content="启动Apache
+Mac OS自带Apache, 只需要启动Apache就可以了
+
+1sudo apachectl start
+介绍另外几个命令
+123sudo apachectl restart //重启Apache服务sudo apachectl stop //停止Apache服务httpd -v //查看Apache版本
+
+打开浏览器，在地址栏输入localhost, 出现It Works,">
+<meta property="og:image" content="https://d3dr1ze7164817.cloudfront.net/items/0Z2x0c3O020X2t1e1D2T/Image%202017-03-12%20at%206.07.37%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&v=5a0a2a76">
+<meta property="og:updated_time" content="2017-04-01T14:12:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MySQL忘记密码后重置密码( Mac )">
-<meta name="twitter:description" content="​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。
-​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造">
-<meta name="twitter:image" content="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&v=8fe78e62">
+<meta name="twitter:title" content="在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用">
+<meta name="twitter:description" content="启动Apache
+Mac OS自带Apache, 只需要启动Apache就可以了
+
+1sudo apachectl start
+介绍另外几个命令
+123sudo apachectl restart //重启Apache服务sudo apachectl stop //停止Apache服务httpd -v //查看Apache版本
+
+打开浏览器，在地址栏输入localhost, 出现It Works,">
+<meta name="twitter:image" content="https://d3dr1ze7164817.cloudfront.net/items/0Z2x0c3O020X2t1e1D2T/Image%202017-03-12%20at%206.07.37%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&v=5a0a2a76">
 
 
 
@@ -140,7 +158,7 @@
 
 
 
-  <title>MySQL忘记密码后重置密码( Mac ) | Ye Wei's blog</title>
+  <title>在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用 | Ye Wei's blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MySQL忘记密码后重置密码( Mac )</h1>
+          <h1 class="post-title" itemprop="name headline">在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</h1>
         
 
         <div class="post-meta">
@@ -345,46 +363,41 @@
       
 
       
-        <p>​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。</p>
-<p>​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。给自己点赞。不多说了，一步一步跟我走。</p>
-<ol>
-<li>关闭MySQL服务器</li>
+        <h2 id="启动Apache"><a href="#启动Apache" class="headerlink" title="启动Apache"></a>启动Apache</h2><ol>
+<li>Mac OS自带Apache, 只需要启动Apache就可以了</li>
 </ol>
-<p><code>sudo /usr/local/mysql/support-files/mysql.server stop</code></p>
-<p>或者</p>
-<p>在偏好设置里点击MySQL然后将其关闭</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apachectl start</div></pre></td></tr></table></figure>
+<p>介绍另外几个命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apachectl restart //重启Apache服务</div><div class="line">sudo apachectl stop //停止Apache服务</div><div class="line">httpd -v //查看Apache版本</div></pre></td></tr></table></figure>
 <ol>
-<li>进入MySQL的二进制命令目录下</li>
+<li>打开浏览器，在地址栏输入localhost, 出现It Works, 就说明已经成功启动</li>
 </ol>
-<p><code>cd /usr/local/mysql/bin</code></p>
+<p><img src="https://d3dr1ze7164817.cloudfront.net/items/0Z2x0c3O020X2t1e1D2T/Image%202017-03-12%20at%206.07.37%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=5a0a2a76" alt=""></p>
 <ol>
-<li>获取MySQL操作权限</li>
+<li>进入Apache的网站服务器根目录</li>
 </ol>
-<p><code>sudo su</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /Library/WebServer/Documents</div></pre></td></tr></table></figure>
 <ol>
-<li>重启MySQL服务器</li>
+<li>Mac OS 同样自带PHP，只需要在Apache的配置文件中添加Apache对PHP的支持就好了</li>
 </ol>
-<p><code>./mysqld_safe --skip-grant-tables</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/apache2/httpd.conf //打开文件</div><div class="line"></div><div class="line">#LoadModule php5_module libexec/apache2/libphp5.so //去掉注释(前面的 # 号)</div></pre></td></tr></table></figure>
 <ol>
-<li>重开个终端</li>
+<li>重启Apache服务器</li>
+<li>在/Library/WebServer/Documents下新建php文件，例如test.php</li>
+<li>在浏览器中输入 localhost/test.php, 如果出现预期的结果，恭喜你！</li>
 </ol>
-<hr>
-<p>为了在终端可以使用MySQL的命令，需要配置一下，运行下面两条命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias mysql=/usr/local/mysql/bin/mysql</div><div class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladminx</div></pre></td></tr></table></figure>
-<p>使用这种方法进行配置，一旦终端关闭了，就又得重新配置了，最好的方法是将MySQL的bin目录加入系统PATH，我用的终端是zsh，所以讲命令配置在.zshrc，如果是其他终端，修改的是相应的文件( 例如：bash -&gt; ./.bashrc )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">打开.zshrc, 添加 export PATH=$PATH:/usr/local/mysql/bin</div><div class="line">执行命令 source ./.zshrc</div></pre></td></tr></table></figure>
-<ol>
-<li>输入mysql 进入mysql命令模式</li>
-<li>输入use mysql 进入mysql数据库</li>
-<li>输入flush privileges 获取修改密码的权限</li>
-<li>输入set password for ‘root’@’localhost’=password(‘新密码’) 修改密码</li>
-<li>恭喜你，密码修改成功</li>
-<li>使用新密码登录</li>
-</ol>
-<p><code>mysql -u root -p</code></p>
-<p>回车后输入新密码</p>
-<p><img src="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=8fe78e62" alt=""></p>
-<p>出现上面这个就说明成功登录MySQL</p>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
+<li>启动MySQL的安全模式，可以免登录名和密码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mysqld --skip-grant-tables</div></pre></td></tr></table></figure>
+<ul>
+<li>使用root用户[免密码]登录MySQL</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div><div class="line"></div><div class="line">输入密码时直接回车</div></pre></td></tr></table></figure>
+<ul>
+<li>解决MAC下PHP连接MYSQL错误Warning: mysql_connect(): No such file or directory in conn.php</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /var/mysql</div><div class="line">sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -433,8 +446,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2014/05/07/abc/" rel="prev" title="在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用">
-                在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2014/05/07/abc/" rel="prev" title="MySQL忘记密码后重置密码( Mac )">
+                MySQL忘记密码后重置密码( Mac ) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -482,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpeg"
@@ -552,6 +574,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动Apache"><span class="nav-number">1.</span> <span class="nav-text">启动Apache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL"><span class="nav-number">2.</span> <span class="nav-text">MySQL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
