@@ -265,7 +265,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/04/13/abc/">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/15/react-native 版本升级与降级/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Wei">
@@ -284,7 +284,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/04/13/abc/" itemprop="url">Mac常用命令</a></h1>
+                <a class="post-title-link" href="/2017/05/15/react-native 版本升级与降级/" itemprop="url">react-native 版本升级与降级</a></h1>
         
 
         <div class="post-meta">
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T22:29:12+08:00">
-                2017-04-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T17:27:30+08:00">
+                2017-05-15
               </time>
             
 
@@ -337,9 +337,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/04/13/abc/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/15/react-native 版本升级与降级/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/13/abc/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/15/react-native 版本升级与降级/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -366,16 +366,366 @@
       
         
           
-            <ul>
-<li>显示系统隐藏文件</li>
+            <h2 id="react-native-版本升级与降级"><a href="#react-native-版本升级与降级" class="headerlink" title="react-native 版本升级与降级"></a>react-native 版本升级与降级</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>现在React Native For Android刚刚开源才不久，现在整体功能还不健全完善以及开发中的坑(Bug)还是比较多的 ，以至于到现在还没有正式版本。项目人员正在加紧开发维护，修复Bug，所以现在React Native项目的版本更新速度还是相对来讲是比较快的。在如此现状之下，我们就要及时关注项目官网了，要将React Native往新版本进行更新，这样我们可以去使用更多的APIs,视图Views,以及开发者工具以及其他一些好用的东西。</p>
+<p>我们大家都知道一个React Native项目使用Android项目,iOS项目和JavaScript项目三部分进行组成的，而且三者都关联打包在npm包内的，所以该项目版本进行更新是比较繁琐的。下面我来给大家讲解一下React Native项目的升级步骤。</p>
+<h3 id="更换React-Native版本"><a href="#更换React-Native版本" class="headerlink" title="更换React Native版本"></a>更换React Native版本</h3><p><em>查看本地React Native 版本</em></p>
+<ul>
+<li>首先我们需要查看本地的React Native的版本，命令行输入如下命令:</li>
 </ul>
-<ol>
-<li>运行下面命令</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">defaults write com.apple.finder AppleShowAllFiles -bool true  此命令显示隐藏文件</div><div class="line">defaults write com.apple.finder AppleShowAllFiles -bool false 此命令关闭显示隐藏</div></pre></td></tr></table></figure>
-<ol>
-<li>重新加载Finder: command + option + esc, 选中Finder, 即可重新启动</li>
-</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native --version</div></pre></td></tr></table></figure>
+<ul>
+<li>进入创建的React Native主目录，然后执行 <code>react-native –version</code>就可以看到react-native-cli和react-native的版本号</li>
+</ul>
+<p><em>查看npm包管理的React Native 版本</em></p>
+<ul>
+<li>通过命令行查看React Native版本</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm info react-native</div></pre></td></tr></table></figure>
+<p><em>更换版本</em></p>
+<p>打开项目中的package.json文件，找到dependencies字段，把react-native的版本修改为想要更换的版本</p>
+<p><em>切换到项目主目录，执行</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
+<p><em>如安装成功，查看当前版本</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native --version</div></pre></td></tr></table></figure>
+<h3 id="更新项目templates"><a href="#更新项目templates" class="headerlink" title="更新项目templates"></a>更新项目templates</h3><p>版本不同，构建的项目模板也会发生变化，所以在更新了React Native版本之后，也要及时更新项目模板</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native upgrade</div></pre></td></tr></table></figure>
+<p><em>在更新templates的过程中，会进行文件修改检查，选择覆盖还是保留原文件，需要根据实际情况选择是否覆盖，其中有三点原则</em></p>
+<ul>
+<li>如果是新添加的文件，会进行直接创建</li>
+<li>如果更新文件与原文件相同，直接忽略跳过</li>
+<li>如果更新文件和当前项目文件不同，有冲突情况，会询问开发者选择覆盖还是保留原文件，需要看实际情况</li>
+</ul>
+<p>到这里就完成了版本的更换了，在项目根目录运行<code>react-native run-ios</code>或<code>react-native run-android</code>看看有没有问题吧！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/15/MA常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/15/MA常用命令/" itemprop="url">MAC常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T11:00:53+08:00">
+                2017-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/15/MA常用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/15/MA常用命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="显示系统隐藏文件"><a href="#显示系统隐藏文件" class="headerlink" title="显示系统隐藏文件"></a>显示系统隐藏文件</h2><h3 id="运行下面命令"><a href="#运行下面命令" class="headerlink" title="运行下面命令"></a>运行下面命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">defaults write com.apple.finder AppleShowAllFiles -bool true  此命令显示隐藏文件</div><div class="line">defaults write com.apple.finder AppleShowAllFiles -bool false 此命令关闭显示隐藏</div></pre></td></tr></table></figure>
+<h3 id="重新加载Finder-command-option-esc-选中Finder-即可重新启动"><a href="#重新加载Finder-command-option-esc-选中Finder-即可重新启动" class="headerlink" title="重新加载Finder: command + option + esc, 选中Finder, 即可重新启动"></a>重新加载Finder: command + option + esc, 选中Finder, 即可重新启动</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/15/abc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/15/abc/" itemprop="url">MySQL忘记密码后重置密码( Mac )</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T10:48:41+08:00">
+                2017-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/15/abc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/15/abc/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。</p>
+</blockquote>
+<p>   这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。给自己点赞。不多说了，一步一步跟我</p>
+<ul>
+<li>走关闭MySQL服务器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /usr/local/mysql/support-files/mysql.server stop</div></pre></td></tr></table></figure>
+<p>或者在偏好设置里点击MySQL然后将其关闭</p>
+<ul>
+<li>进入MySQL的二进制命令目录下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/mysql/bin</div></pre></td></tr></table></figure>
+<ul>
+<li>获取MySQL操作权限</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo su</div></pre></td></tr></table></figure>
+<ul>
+<li><p>重启MySQL服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./mysqld_safe --skip-grant-tables</div></pre></td></tr></table></figure>
+</li>
+<li><p>重开个终端</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>为了在终端可以使用MySQL的命令，需要配置一下，运行下面两条命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias mysql=/usr/local/mysql/bin/mysql</div><div class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladminx</div></pre></td></tr></table></figure>
+<p>使用这种方法进行配置，一旦终端关闭了，就又得重新配置了，最好的方法是将MySQL的bin目录加入系统PATH，我用的终端是zsh，所以讲命令配置在.zshrc，如果是其他终端，修改的是相应的文件( 例如：bash -&gt; ./.bashrc )</p>
+<p>打开.zshrc, 添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:/usr/local/mysql/bin</div></pre></td></tr></table></figure></p>
+<p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ./.zshrc</div></pre></td></tr></table></figure></p>
+<p>输入mysql 进入mysql命令模式</p>
+<p>输入use mysql 进入mysql数据库</p>
+<p>输入flush privileges 获取修改密码的权限</p>
+<p>输入set password for ‘root’@’localhost’=password(‘新密码’) 修改密码</p>
+<p>恭喜你，密码修改成功</p>
+<p>使用新密码登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
+<p>回车后输入新密码<br><img src="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=8fe78e62" alt=""></p>
+<p>出现上面这个就说明成功登录MySQL</p>
 
           
         
@@ -1048,7 +1398,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/03/05/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/03/12/abc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Wei">
@@ -1067,7 +1417,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/05/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/2017/03/12/abc/" itemprop="url">在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</a></h1>
         
 
         <div class="post-meta">
@@ -1079,161 +1429,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T16:16:27+08:00">
-                2017-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/blog/" itemprop="url" rel="index">
-                    <span itemprop="name">blog</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/05/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/05/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2014/05/07/abc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Wei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ye Wei's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/05/07/abc/" itemprop="url">MySQL忘记密码后重置密码( Mac )</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-07T18:44:12+08:00">
-                2014-05-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T16:17:38+08:00">
+                2017-03-12
               </time>
             
 
@@ -1273,193 +1470,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2014/05/07/abc/#comments" itemprop="discussionUrl">
+                <a href="/2017/03/12/abc/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/05/07/abc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>​    安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。</p>
-<p>​    这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。给自己点赞。不多说了，一步一步跟我走。</p>
-<ol>
-<li>关闭MySQL服务器</li>
-</ol>
-<p><code>sudo /usr/local/mysql/support-files/mysql.server stop</code></p>
-<p>或者</p>
-<p>在偏好设置里点击MySQL然后将其关闭</p>
-<ol>
-<li>进入MySQL的二进制命令目录下</li>
-</ol>
-<p><code>cd /usr/local/mysql/bin</code></p>
-<ol>
-<li>获取MySQL操作权限</li>
-</ol>
-<p><code>sudo su</code></p>
-<ol>
-<li>重启MySQL服务器</li>
-</ol>
-<p><code>./mysqld_safe --skip-grant-tables</code></p>
-<ol>
-<li>重开个终端</li>
-</ol>
-<hr>
-<p>为了在终端可以使用MySQL的命令，需要配置一下，运行下面两条命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias mysql=/usr/local/mysql/bin/mysql</div><div class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladminx</div></pre></td></tr></table></figure>
-<p>使用这种方法进行配置，一旦终端关闭了，就又得重新配置了，最好的方法是将MySQL的bin目录加入系统PATH，我用的终端是zsh，所以讲命令配置在.zshrc，如果是其他终端，修改的是相应的文件( 例如：bash -&gt; ./.bashrc )</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">打开.zshrc, 添加 export PATH=$PATH:/usr/local/mysql/bin</div><div class="line">执行命令 source ./.zshrc</div></pre></td></tr></table></figure>
-<ol>
-<li>输入mysql 进入mysql命令模式</li>
-<li>输入use mysql 进入mysql数据库</li>
-<li>输入flush privileges 获取修改密码的权限</li>
-<li>输入set password for ‘root’@’localhost’=password(‘新密码’) 修改密码</li>
-<li>恭喜你，密码修改成功</li>
-<li>使用新密码登录</li>
-</ol>
-<p><code>mysql -u root -p</code></p>
-<p>回车后输入新密码</p>
-<p><img src="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=8fe78e62" alt=""></p>
-<p>出现上面这个就说明成功登录MySQL</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2014/05/07/abc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Wei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ye Wei's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2014/05/07/abc/" itemprop="url">在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-05-07T18:44:12+08:00">
-                2014-05-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2014/05/07/abc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2014/05/07/abc/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/03/12/abc/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1622,7 +1635,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
