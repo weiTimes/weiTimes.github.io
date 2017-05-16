@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://weiTimes.github.io/"/>
-  <updated>2017-05-16T02:33:06.000Z</updated>
+  <updated>2017-05-16T03:57:35.000Z</updated>
   <id>https://weiTimes.github.io/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何初始化本地git项目，并将其添加到远程仓库</title>
+    <link href="https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>https://weiTimes.github.io/2017/05/16/React Native问题集锦及解决方案/</id>
+    <published>2017-05-16T03:55:50.000Z</published>
+    <updated>2017-05-16T03:57:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="React-Native问题集锦及解决方案"><a href="#React-Native问题集锦及解决方案" class="headerlink" title="React Native问题集锦及解决方案"></a>React Native问题集锦及解决方案</h2><blockquote>
+<p>在React Native的实际开发过程中，会遇到各种各样的问题，有时候花了一段时间去解决完一个问题之后，过了很久可能会又遇到了，由于当时没有记录与总结，所以很可能忘了，然后只能继续去踩坑了，虽然踩坑的速度要比之前快些，但总是费事，所以我将我遇到的问题作一个记录，一个是方便自己查看，另一个希望给有遇到过相同或者相似问题的童鞋一点帮助</p>
+</blockquote>
+<p><strong>TextInput获得焦点时，模拟器不出现键盘</strong></p>
+<p><em>需要勾选Hardware -&gt; Keyboard -&gt; Toggle Software keyboard</em></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;React-Native问题集锦及解决方案&quot;&gt;&lt;a href=&quot;#React-Native问题集锦及解决方案&quot; class=&quot;headerlink&quot; title=&quot;React Native问题集锦及解决方案&quot;&gt;&lt;/a&gt;React Native问题集锦及解决方案&lt;/
+    
+    </summary>
+    
+      <category term="技术" scheme="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="React Native" scheme="https://weiTimes.github.io/tags/React-Native/"/>
+    
+  </entry>
   
   <entry>
     <title>如何初始化本地git项目，并将其添加到远程仓库</title>
