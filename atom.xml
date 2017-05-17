@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://weiTimes.github.io/"/>
-  <updated>2017-05-16T03:59:12.000Z</updated>
+  <updated>2017-05-17T07:33:44.000Z</updated>
   <id>https://weiTimes.github.io/</id>
   
   <author>
@@ -20,13 +20,16 @@
     <link href="https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>https://weiTimes.github.io/2017/05/16/React Native问题集锦及解决方案/</id>
     <published>2017-05-16T03:55:50.000Z</published>
-    <updated>2017-05-16T03:59:12.000Z</updated>
+    <updated>2017-05-17T07:33:44.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="React-Native问题集锦及解决方案"><a href="#React-Native问题集锦及解决方案" class="headerlink" title="React Native问题集锦及解决方案"></a>React Native问题集锦及解决方案</h2><blockquote>
 <p>在React Native的实际开发过程中，会遇到各种各样的问题，有时候花了一段时间去解决完一个问题之后，过了很久可能会又遇到了，由于当时没有记录与总结，所以很可能忘了，然后只能继续去踩坑了，虽然踩坑的速度要比之前快些，但总是费事，所以我将我遇到的问题作一个记录，一个是方便自己查看，另一个希望给有遇到过相同或者相似问题的童鞋一点帮助</p>
 </blockquote>
 <p><strong>TextInput获得焦点时，模拟器不出现键盘</strong></p>
 <p><em>需要勾选Hardware -&gt; Keyboard -&gt; Toggle Software keyboard</em></p>
+<p><strong>加载WebView的时候提示错误信息</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error Domain=NSURLErrorDomain Code=-1022 &quot;The resource could not be loaded because the App Transport Security policy requires the use of a secure connection.&quot;</div></pre></td></tr></table></figure></p>
+<p><em>这是因为Xcode 7以后, 苹果要求所有的网络请求都是安全的(HTTPS). 所有如果本身的服务器不支持HTTPS请求的话就要修改Xcode的默认配置.</em></p>
+<p><em>在info.plist文件中, 右击空白位置 Add Row. 然后添加类型为Dictionary的NSAppTransportSecurity, 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean, 值设为YES</em></p>
 ]]></content>
     
     <summary type="html">
