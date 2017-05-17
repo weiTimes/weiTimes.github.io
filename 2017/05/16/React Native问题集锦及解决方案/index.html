@@ -104,7 +104,7 @@ TextInput">
 在React Native的实际开发过程中，会遇到各种各样的问题，有时候花了一段时间去解决完一个问题之后，过了很久可能会又遇到了，由于当时没有记录与总结，所以很可能忘了，然后只能继续去踩坑了，虽然踩坑的速度要比之前快些，但总是费事，所以我将我遇到的问题作一个记录，一个是方便自己查看，另一个希望给有遇到过相同或者相似问题的童鞋一点帮助
 
 TextInput">
-<meta property="og:updated_time" content="2017-05-17T07:33:44.000Z">
+<meta property="og:updated_time" content="2017-05-17T08:29:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Native问题集锦及解决方案">
 <meta name="twitter:description" content="React Native问题集锦及解决方案
@@ -375,9 +375,6 @@ TextInput">
 </blockquote>
 <p><strong>TextInput获得焦点时，模拟器不出现键盘</strong></p>
 <p><em>需要勾选Hardware -&gt; Keyboard -&gt; Toggle Software keyboard</em></p>
-<p><strong>加载WebView的时候提示错误信息</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error Domain=NSURLErrorDomain Code=-1022 &quot;The resource could not be loaded because the App Transport Security policy requires the use of a secure connection.&quot;</div></pre></td></tr></table></figure></p>
-<p><em>这是因为Xcode 7以后, 苹果要求所有的网络请求都是安全的(HTTPS). 所有如果本身的服务器不支持HTTPS请求的话就要修改Xcode的默认配置.</em></p>
-<p><em>在info.plist文件中, 右击空白位置 Add Row. 然后添加类型为Dictionary的NSAppTransportSecurity, 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean, 值设为YES</em></p>
 
       
     </div>
@@ -429,6 +426,10 @@ TextInput">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/" rel="prev" title="react-native 版本升级与降级">
+                react-native 版本升级与降级 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -507,7 +508,7 @@ TextInput">
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

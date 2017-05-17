@@ -265,6 +265,174 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/" itemprop="url">react-native 版本升级与降级</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-17T16:30:39+08:00">
+                2017-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/17/在React Native中用WebView打开非HTTPS的的站点/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="在React-Native中用WebView打开非HTTPS的的站点"><a href="#在React-Native中用WebView打开非HTTPS的的站点" class="headerlink" title="在React Native中用WebView打开非HTTPS的的站点"></a>在React Native中用WebView打开非HTTPS的的站点</h2><blockquote>
+<p>在React Native应用中使用WebView可以复用已经写好的web页面。</p>
+</blockquote>
+<p><em>在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术</em></p>
+<p><strong>让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;WebView</div><div class="line"> contentInset=&#123;&#123; <span class="attr">top</span>: <span class="number">-50</span> &#125;&#125;</div><div class="line">                        startInLoadingState=&#123;<span class="literal">true</span>&#125;</div><div class="line">                        source=&#123;&#123; <span class="attr">uri</span>: 			<span class="string">'http://movie.douban.com/subject/25862357/'</span> &#125;&#125;</div><div class="line">                        <span class="comment">//source=&#123;&#123; uri: this.props.url &#125;&#125;</span></div><div class="line">                        style=&#123;styles.webView&#125;</div><div class="line">                    /&gt;</div></pre></td></tr></table></figure>
+<p><strong>在IOS9.0或者更高的环境下，在iPhone模拟器中运行应用，将会出现错误信息</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Error Loading Page</div><div class="line">Domain: NSURLErrorDomain</div><div class="line">Error Code: -1022</div><div class="line">Description: The resource could not be loaded because</div><div class="line">the App Transport Security policy requires the use of a</div><div class="line">secure connection</div></pre></td></tr></table></figure>
+<p>理想情况下，这个站点会尝试去连接HTTPS服务。然而，该站点HTTPS服务可能没有被启用或者不支持。</p>
+<p>例如，我们在开发app的过程中，可能会想要去连接HTTP的服务。</p>
+<h3 id="使用Xcode-将使用的站点服务加入白名单"><a href="#使用Xcode-将使用的站点服务加入白名单" class="headerlink" title="使用Xcode-将使用的站点服务加入白名单"></a>使用Xcode-将使用的站点服务加入白名单</h3><p><strong>为了在WebView中访问HTTP站点，我们需要在Xcode中打开项目，然后打开 <code>Info.plist</code> file</strong></p>
+<p>在打开的列表中，我们可以找到<code>App Transport Security Settings</code></p>
+<p>当我们展开找到的这一项时，可以看到在<code>Exception Domains</code>中的<code>localhost</code>，在<code>localhost</code>的展开项中有<code>NSTemporaryExceptionAllowsInsecureHTTPLoads</code>，而且它的value值是<code>true</code></p>
+<p>因为有了以上设置，当我们连接<code>localhost</code>的服务时，app可以成功运行，即使访问的站点服务支持的类型是HTTP而不是HTTPS.</p>
+<p>所以为了能够成功访问非HTTPS的站点，我们需要将访问站点的URL添加到白名单。</p>
+<ol>
+<li>鼠标移到<code>Exception Domains</code>上，我们可以看到 在右边栏的<code>+</code> </li>
+<li>点击添加我们的domain，并且设置它的类型为<code>dictionary</code></li>
+<li>现在点击我们刚才添加的domain,然后添加一项key值为<code>NSTemporaryExceptionAllowsInsecureHTTPLoads</code>,类型为<code>Boolean</code>,value值为<code>YES</code>,和之前我们看到的localhost下的设置项是一样的</li>
+<li>在终端运行<code>react-native run-ios</code>，我们的应用将会被重新加载，如果没有成功，在运行应用之前先使用xcode<code>clean build</code></li>
+</ol>
+<h3 id="使用Xcode-将所有站点服务加入白名单"><a href="#使用Xcode-将所有站点服务加入白名单" class="headerlink" title="使用Xcode-将所有站点服务加入白名单"></a>使用Xcode-将所有站点服务加入白名单</h3><p>在实际开发过程中一个个地将站点加入白名单会显得有点麻烦，这时候我们可以将所有的域名都加入白名单。</p>
+<p>为了允许所有非HTTPS的站点服务，先删除Xcode中的info.plist里面的<code>Exception Domains</code>，然后添加一个新的key值<code>Allow Arbitrary Loads</code>,value值为<code>true</code></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>如果使用第一种方法，即将特定的站点服务加入白名单不见效果，可以使用第二种方法，将所有站点服务都加入白名单，亲测有效哦。</p>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/16/React Native问题集锦及解决方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -371,9 +539,6 @@
 </blockquote>
 <p><strong>TextInput获得焦点时，模拟器不出现键盘</strong></p>
 <p><em>需要勾选Hardware -&gt; Keyboard -&gt; Toggle Software keyboard</em></p>
-<p><strong>加载WebView的时候提示错误信息</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Error Domain=NSURLErrorDomain Code=-1022 &quot;The resource could not be loaded because the App Transport Security policy requires the use of a secure connection.&quot;</div></pre></td></tr></table></figure></p>
-<p><em>这是因为Xcode 7以后, 苹果要求所有的网络请求都是安全的(HTTPS). 所有如果本身的服务器不支持HTTPS请求的话就要修改Xcode的默认配置.</em></p>
-<p><em>在info.plist文件中, 右击空白位置 Add Row. 然后添加类型为Dictionary的NSAppTransportSecurity, 在NSAppTransportSecurity下添加NSAllowsArbitraryLoads类型Boolean, 值设为YES</em></p>
 
           
         
@@ -1699,188 +1864,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/03/12/abc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Wei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ye Wei's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/03/12/abc/" itemprop="url">在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T16:17:38+08:00">
-                2017-03-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/03/12/abc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/12/abc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="启动Apache"><a href="#启动Apache" class="headerlink" title="启动Apache"></a>启动Apache</h2><ol>
-<li>Mac OS自带Apache, 只需要启动Apache就可以了</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apachectl start</div></pre></td></tr></table></figure>
-<p>介绍另外几个命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apachectl restart //重启Apache服务</div><div class="line">sudo apachectl stop //停止Apache服务</div><div class="line">httpd -v //查看Apache版本</div></pre></td></tr></table></figure>
-<ol>
-<li>打开浏览器，在地址栏输入localhost, 出现It Works, 就说明已经成功启动</li>
-</ol>
-<p><img src="https://d3dr1ze7164817.cloudfront.net/items/0Z2x0c3O020X2t1e1D2T/Image%202017-03-12%20at%206.07.37%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=5a0a2a76" alt=""></p>
-<ol>
-<li>进入Apache的网站服务器根目录</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /Library/WebServer/Documents</div></pre></td></tr></table></figure>
-<ol>
-<li>Mac OS 同样自带PHP，只需要在Apache的配置文件中添加Apache对PHP的支持就好了</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/apache2/httpd.conf //打开文件</div><div class="line"></div><div class="line">#LoadModule php5_module libexec/apache2/libphp5.so //去掉注释(前面的 # 号)</div></pre></td></tr></table></figure>
-<ol>
-<li>重启Apache服务器</li>
-<li>在/Library/WebServer/Documents下新建php文件，例如test.php</li>
-<li>在浏览器中输入 localhost/test.php, 如果出现预期的结果，恭喜你！</li>
-</ol>
-<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><ul>
-<li>启动MySQL的安全模式，可以免登录名和密码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo mysqld --skip-grant-tables</div></pre></td></tr></table></figure>
-<ul>
-<li>使用root用户[免密码]登录MySQL</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div><div class="line"></div><div class="line">输入密码时直接回车</div></pre></td></tr></table></figure>
-<ul>
-<li>解决MAC下PHP连接MYSQL错误Warning: mysql_connect(): No such file or directory in conn.php</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo mkdir /var/mysql</div><div class="line">sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1923,7 +1913,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
