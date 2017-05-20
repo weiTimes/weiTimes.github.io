@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://weiTimes.github.io/"/>
-  <updated>2017-05-17T09:49:04.000Z</updated>
+  <updated>2017-05-20T10:27:50.000Z</updated>
   <id>https://weiTimes.github.io/</id>
   
   <author>
@@ -14,6 +14,43 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React Native Android 与 IOS的适配</title>
+    <link href="https://weiTimes.github.io/2017/05/20/React%20Native%20Android%20%E4%B8%8E%20IOS%E7%9A%84%E9%80%82%E9%85%8D/"/>
+    <id>https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/</id>
+    <published>2017-05-20T09:43:07.000Z</published>
+    <updated>2017-05-20T10:27:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="React-Native-之Android-与-IOS的双适配"><a href="#React-Native-之Android-与-IOS的双适配" class="headerlink" title="React Native 之Android 与 IOS的双适配"></a>React Native 之Android 与 IOS的双适配</h2><blockquote>
+<p>React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解</p>
+</blockquote>
+<p><strong>导航栏的高度</strong></p>
+<p><em>ios: 44</em></p>
+<p><em>android: 50</em></p>
+<p><strong>状态栏的高度</strong></p>
+<p><em>ios: 20</em></p>
+<p><em>android: 0</em></p>
+<p><strong>阴影效果(样式)</strong></p>
+<p><em>ios: shadowOffset, shadowRadius</em></p>
+<p><em>android: elevation</em></p>
+<p><strong>ListView中的RefreshControl(刷新器)的颜色</strong></p>
+<p><em>ios: tintColor</em></p>
+<p><em>android: colors</em></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;React-Native-之Android-与-IOS的双适配&quot;&gt;&lt;a href=&quot;#React-Native-之Android-与-IOS的双适配&quot; class=&quot;headerlink&quot; title=&quot;React Native 之Android 与 IOS的双适
+    
+    </summary>
+    
+      <category term="技术" scheme="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="React Native" scheme="https://weiTimes.github.io/tags/React-Native/"/>
+    
+  </entry>
   
   <entry>
     <title>在React Native中用WebView打开非HTTPS的的站点</title>
@@ -66,13 +103,18 @@
     <link href="https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     <id>https://weiTimes.github.io/2017/05/16/React Native问题集锦及解决方案/</id>
     <published>2017-05-16T03:55:50.000Z</published>
-    <updated>2017-05-17T08:29:05.000Z</updated>
+    <updated>2017-05-20T08:18:21.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="React-Native问题集锦及解决方案"><a href="#React-Native问题集锦及解决方案" class="headerlink" title="React Native问题集锦及解决方案"></a>React Native问题集锦及解决方案</h2><blockquote>
 <p>在React Native的实际开发过程中，会遇到各种各样的问题，有时候花了一段时间去解决完一个问题之后，过了很久可能会又遇到了，由于当时没有记录与总结，所以很可能忘了，然后只能继续去踩坑了，虽然踩坑的速度要比之前快些，但总是费事，所以我将我遇到的问题作一个记录，一个是方便自己查看，另一个希望给有遇到过相同或者相似问题的童鞋一点帮助</p>
 </blockquote>
 <p><strong>TextInput获得焦点时，模拟器不出现键盘</strong></p>
 <p><em>需要勾选Hardware -&gt; Keyboard -&gt; Toggle Software keyboard</em></p>
+<p><strong>路由跳转的时候，会出现透明的背景色，看起来很不协调</strong></p>
+<p><em>可以给组件添加一个背景色</em></p>
+<p><strong>导入第三方组件<code>react-native-scrollable-tab-view</code>的时候报错，后来发现是版本依赖的问题</strong></p>
+<p><em>安装react-native-scrollable-tab-view的时候指定它的版本为0.7.0，即</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save react-native-scrollable-tab-view@0.7.0</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">

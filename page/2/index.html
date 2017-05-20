@@ -265,6 +265,163 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/03/23/abc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/03/23/abc/" itemprop="url">Mac上设置MySQL默认编码为UTF-8</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T18:44:29+08:00">
+                2017-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/23/abc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/03/23/abc/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>登录mysql终端，然后输入下面内容，查看该数据库连接使用的字符集的情况</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show variables like &apos;%char%&apos;;</div></pre></td></tr></table></figure>
+<ol>
+<li>进入到 /usr/local/mysql/support-files 目录，可以看到里面有个文件: my-default.cnf</li>
+<li>将其复制到桌面上，改名为 my.cnf. 用你喜欢的编辑器将内容替换为:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"># Example MySQL config file for small systems.</div><div class="line">#</div><div class="line"># This is for a system with little memory (&lt;= 64M) where MySQL is only used</div><div class="line"># from time to time and it&apos;s important that the mysqld daemon</div><div class="line"># doesn&apos;t use much resources.</div><div class="line">#</div><div class="line"># MySQL programs look for option files in a set of</div><div class="line"># locations which depend on the deployment platform.</div><div class="line"># You can copy this option file to one of those</div><div class="line"># locations. For information about these locations, see:</div><div class="line"># http://dev.mysql.com/doc/mysql/en/option-files.html</div><div class="line">#</div><div class="line"># In this file, you can use all long options that a program supports.</div><div class="line"># If you want to know which options a program supports, run the program</div><div class="line"># with the &quot;--help&quot; option.</div><div class="line"></div><div class="line"># The following options will be passed to all MySQL clients</div><div class="line">[client]</div><div class="line">default-character-set=utf8</div><div class="line">#password   = your_password</div><div class="line">port        = 3306</div><div class="line">socket      = /tmp/mysql.sock</div><div class="line"></div><div class="line"># Here follows entries for some specific programs</div><div class="line"></div><div class="line"># The MySQL server</div><div class="line">[mysqld]</div><div class="line">default-storage-engine=INNODB</div><div class="line">character-set-server=utf8</div><div class="line">collation-server=utf8_general_ci</div><div class="line">port        = 3306</div><div class="line">socket      = /tmp/mysql.sock</div><div class="line">skip-external-locking</div><div class="line">key_buffer_size = 16K</div><div class="line">max_allowed_packet = 1M</div><div class="line">table_open_cache = 4</div><div class="line">sort_buffer_size = 64K</div><div class="line">read_buffer_size = 256K</div><div class="line">read_rnd_buffer_size = 256K</div><div class="line">net_buffer_length = 2K</div><div class="line">thread_stack = 128K</div><div class="line"></div><div class="line"># Don&apos;t listen on a TCP/IP port at all. This can be a security enhancement,</div><div class="line"># if all processes that need to connect to mysqld run on the same host.</div><div class="line"># All interaction with mysqld must be made via Unix sockets or named pipes.</div><div class="line"># Note that using this option without enabling named pipes on Windows</div><div class="line"># (using the &quot;enable-named-pipe&quot; option) will render mysqld useless!</div><div class="line">#</div><div class="line">#skip-networking</div><div class="line">server-id   = 1</div><div class="line"></div><div class="line"># Uncomment the following if you want to log updates</div><div class="line">#log-bin=mysql-bin</div><div class="line"></div><div class="line"># binary logging format - mixed recommended</div><div class="line">#binlog_format=mixed</div><div class="line"></div><div class="line"># Causes updates to non-transactional engines using statement format to be</div><div class="line"># written directly to binary log. Before using this option make sure that</div><div class="line"># there are no dependencies between transactional and non-transactional</div><div class="line"># tables such as in the statement INSERT INTO t_myisam SELECT * FROM</div><div class="line"># t_innodb; otherwise, slaves may diverge from the master.</div><div class="line">#binlog_direct_non_transactional_updates=TRUE</div><div class="line"></div><div class="line"># Uncomment the following if you are using InnoDB tables</div><div class="line">#innodb_data_home_dir = /usr/local/mysql/data</div><div class="line">#innodb_data_file_path = ibdata1:10M:autoextend</div><div class="line">#innodb_log_group_home_dir = /usr/local/mysql/data</div><div class="line"># You can set .._buffer_pool_size up to 50 - 80 %</div><div class="line"># of RAM but beware of setting memory usage too high</div><div class="line">#innodb_buffer_pool_size = 16M</div><div class="line">#innodb_additional_mem_pool_size = 2M</div><div class="line"># Set .._log_file_size to 25 % of buffer pool size</div><div class="line">#innodb_log_file_size = 5M</div><div class="line">#innodb_log_buffer_size = 8M</div><div class="line">#innodb_flush_log_at_trx_commit = 1</div><div class="line">#innodb_lock_wait_timeout = 50</div><div class="line"></div><div class="line">[mysqldump]</div><div class="line">quick</div><div class="line">max_allowed_packet = 16M</div><div class="line"></div><div class="line">[mysql]</div><div class="line">no-auto-rehash</div><div class="line"># Remove the next comment character if you are not familiar with SQL</div><div class="line">#safe-updates</div><div class="line"></div><div class="line">[myisamchk]</div><div class="line">key_buffer_size = 8M</div><div class="line">sort_buffer_size = 8M</div><div class="line"></div><div class="line">[mysqlhotcopy]</div><div class="line">interactive-timeout</div></pre></td></tr></table></figure>
+<ol>
+<li>将修改后的文件 my.cnf 复制到 /etc 目录下</li>
+<li>重启mysql</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/03/12/abc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -484,7 +641,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

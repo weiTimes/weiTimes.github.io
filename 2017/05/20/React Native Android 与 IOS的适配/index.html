@@ -92,28 +92,37 @@
 
 
 
-<meta name="description" content="在React Native中用WebView打开非HTTPS的的站点
-在React Native应用中使用WebView可以复用已经写好的web页面。
+<meta name="description" content="React Native 之Android 与 IOS的双适配
+React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解
 
-在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术
-让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点">
+导航栏的高度
+ios: 44
+android: 50
+状态栏的高度
+ios">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在React Native中用WebView打开非HTTPS的的站点">
-<meta property="og:url" content="https://weiTimes.github.io/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/index.html">
+<meta property="og:title" content="React Native Android 与 IOS的适配">
+<meta property="og:url" content="https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/index.html">
 <meta property="og:site_name" content="Ye Wei's blog">
-<meta property="og:description" content="在React Native中用WebView打开非HTTPS的的站点
-在React Native应用中使用WebView可以复用已经写好的web页面。
+<meta property="og:description" content="React Native 之Android 与 IOS的双适配
+React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解
 
-在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术
-让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点">
-<meta property="og:updated_time" content="2017-05-17T09:49:04.000Z">
+导航栏的高度
+ios: 44
+android: 50
+状态栏的高度
+ios">
+<meta property="og:updated_time" content="2017-05-20T10:27:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在React Native中用WebView打开非HTTPS的的站点">
-<meta name="twitter:description" content="在React Native中用WebView打开非HTTPS的的站点
-在React Native应用中使用WebView可以复用已经写好的web页面。
+<meta name="twitter:title" content="React Native Android 与 IOS的适配">
+<meta name="twitter:description" content="React Native 之Android 与 IOS的双适配
+React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解
 
-在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术
-让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点">
+导航栏的高度
+ios: 44
+android: 50
+状态栏的高度
+ios">
 
 
 
@@ -141,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="https://weiTimes.github.io/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/"/>
+  <link rel="canonical" href="https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/"/>
 
 
 
 
 
-  <title>在React Native中用WebView打开非HTTPS的的站点 | Ye Wei's blog</title>
+  <title>React Native Android 与 IOS的适配 | Ye Wei's blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +285,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Wei">
@@ -293,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">在React Native中用WebView打开非HTTPS的的站点</h1>
+          <h1 class="post-title" itemprop="name headline">React Native Android 与 IOS的适配</h1>
         
 
         <div class="post-meta">
@@ -305,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-17T16:30:39+08:00">
-                2017-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T17:43:07+08:00">
+                2017-05-20
               </time>
             
 
@@ -346,9 +355,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/20/React Native Android 与 IOS的适配/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/17/在React Native中用WebView打开非HTTPS的的站点/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/20/React Native Android 与 IOS的适配/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -373,31 +382,22 @@
       
 
       
-        <h2 id="在React-Native中用WebView打开非HTTPS的的站点"><a href="#在React-Native中用WebView打开非HTTPS的的站点" class="headerlink" title="在React Native中用WebView打开非HTTPS的的站点"></a>在React Native中用WebView打开非HTTPS的的站点</h2><blockquote>
-<p>在React Native应用中使用WebView可以复用已经写好的web页面。</p>
+        <h2 id="React-Native-之Android-与-IOS的双适配"><a href="#React-Native-之Android-与-IOS的双适配" class="headerlink" title="React Native 之Android 与 IOS的双适配"></a>React Native 之Android 与 IOS的双适配</h2><blockquote>
+<p>React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解</p>
 </blockquote>
-<p><em>在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术</em></p>
-<p><strong>让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;WebView</div><div class="line"> contentInset=&#123;&#123; <span class="attr">top</span>: <span class="number">-50</span> &#125;&#125;</div><div class="line">                        startInLoadingState=&#123;<span class="literal">true</span>&#125;</div><div class="line">                        source=&#123;&#123; <span class="attr">uri</span>: 			<span class="string">'http://movie.douban.com/subject/25862357/'</span> &#125;&#125;</div><div class="line">                        <span class="comment">//source=&#123;&#123; uri: this.props.url &#125;&#125;</span></div><div class="line">                        style=&#123;styles.webView&#125;</div><div class="line">                    /&gt;</div></pre></td></tr></table></figure>
-<p><strong>在IOS9.0或者更高的环境下，在iPhone模拟器中运行应用，将会出现错误信息</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Error Loading Page</div><div class="line">Domain: NSURLErrorDomain</div><div class="line">Error Code: -1022</div><div class="line">Description: The resource could not be loaded because</div><div class="line">the App Transport Security policy requires the use of a</div><div class="line">secure connection</div></pre></td></tr></table></figure>
-<p>理想情况下，这个站点会尝试去连接HTTPS服务。然而，该站点HTTPS服务可能没有被启用或者不支持。</p>
-<p>例如，我们在开发app的过程中，可能会想要去连接HTTP的服务。</p>
-<h3 id="使用Xcode-将使用的站点服务加入白名单"><a href="#使用Xcode-将使用的站点服务加入白名单" class="headerlink" title="使用Xcode-将使用的站点服务加入白名单"></a>使用Xcode-将使用的站点服务加入白名单</h3><p><strong>为了在WebView中访问HTTP站点，我们需要在Xcode中打开项目，然后打开 <code>Info.plist</code> file</strong></p>
-<p>在打开的列表中，我们可以找到<code>App Transport Security Settings</code></p>
-<p>当我们展开找到的这一项时，可以看到在<code>Exception Domains</code>中的<code>localhost</code>，在<code>localhost</code>的展开项中有<code>NSTemporaryExceptionAllowsInsecureHTTPLoads</code>，而且它的value值是<code>true</code></p>
-<p>因为有了以上设置，当我们连接<code>localhost</code>的服务时，app可以成功运行，即使访问的站点服务支持的类型是HTTP而不是HTTPS.</p>
-<p>所以为了能够成功访问非HTTPS的站点，我们需要将访问站点的URL添加到白名单。</p>
-<ol>
-<li>鼠标移到<code>Exception Domains</code>上，我们可以看到 在右边栏的<code>+</code> </li>
-<li>点击添加我们的domain，并且设置它的类型为<code>dictionary</code></li>
-<li>现在点击我们刚才添加的domain,然后添加一项key值为<code>NSTemporaryExceptionAllowsInsecureHTTPLoads</code>,类型为<code>Boolean</code>,value值为<code>YES</code>,和之前我们看到的localhost下的设置项是一样的</li>
-<li>在终端运行<code>react-native run-ios</code>，我们的应用将会被重新加载，如果没有成功，在运行应用之前先使用xcode<code>clean build</code></li>
-</ol>
-<h3 id="使用Xcode-将所有站点服务加入白名单"><a href="#使用Xcode-将所有站点服务加入白名单" class="headerlink" title="使用Xcode-将所有站点服务加入白名单"></a>使用Xcode-将所有站点服务加入白名单</h3><p>在实际开发过程中一个个地将站点加入白名单会显得有点麻烦，这时候我们可以将所有的域名都加入白名单。</p>
-<p>为了允许所有非HTTPS的站点服务，先删除Xcode中的info.plist里面的<code>Exception Domains</code>，然后添加一个新的key值<code>Allow Arbitrary Loads</code>,value值为<code>true</code></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>如果使用第一种方法，即将特定的站点服务加入白名单不见效果，可以使用第二种方法，将所有站点服务都加入白名单，亲测有效哦。</p>
-<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3>
+<p><strong>导航栏的高度</strong></p>
+<p><em>ios: 44</em></p>
+<p><em>android: 50</em></p>
+<p><strong>状态栏的高度</strong></p>
+<p><em>ios: 20</em></p>
+<p><em>android: 0</em></p>
+<p><strong>阴影效果(样式)</strong></p>
+<p><em>ios: shadowOffset, shadowRadius</em></p>
+<p><em>android: elevation</em></p>
+<p><strong>ListView中的RefreshControl(刷新器)的颜色</strong></p>
+<p><em>ios: tintColor</em></p>
+<p><em>android: colors</em></p>
+
       
     </div>
 
@@ -439,8 +439,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/16/React Native问题集锦及解决方案/" rel="next" title="React Native问题集锦及解决方案">
-                <i class="fa fa-chevron-left"></i> React Native问题集锦及解决方案
+              <a href="/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/" rel="next" title="在React Native中用WebView打开非HTTPS的的站点">
+                <i class="fa fa-chevron-left"></i> 在React Native中用WebView打开非HTTPS的的站点
               </a>
             
           </div>
@@ -448,10 +448,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/20/React Native Android 与 IOS的适配/" rel="prev" title="React Native Android 与 IOS的适配">
-                React Native Android 与 IOS的适配 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在React-Native中用WebView打开非HTTPS的的站点"><span class="nav-number">1.</span> <span class="nav-text">在React Native中用WebView打开非HTTPS的的站点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Xcode-将使用的站点服务加入白名单"><span class="nav-number">1.1.</span> <span class="nav-text">使用Xcode-将使用的站点服务加入白名单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Xcode-将所有站点服务加入白名单"><span class="nav-number">1.2.</span> <span class="nav-text">使用Xcode-将所有站点服务加入白名单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.4.</span> <span class="nav-text"> </span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Native-之Android-与-IOS的双适配"><span class="nav-number">1.</span> <span class="nav-text">React Native 之Android 与 IOS的双适配</span></a></li></ol></div>
             
 
           </div>
@@ -764,9 +760,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://weiTimes.github.io/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/';
-          this.page.identifier = '2017/05/17/在React Native中用WebView打开非HTTPS的的站点/';
-          this.page.title = '在React Native中用WebView打开非HTTPS的的站点';
+          this.page.url = 'https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/';
+          this.page.identifier = '2017/05/20/React Native Android 与 IOS的适配/';
+          this.page.title = 'React Native Android 与 IOS的适配';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://yewei.disqus.com/embed.js';
