@@ -265,6 +265,573 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/07/24/React native 分辨率适配/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/24/React native 分辨率适配/" itemprop="url">React native 分辨率适配</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-24T16:44:51+08:00">
+                2017-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/24/React native 分辨率适配/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/07/24/React native 分辨率适配/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="React-native-分辨率适配"><a href="#React-native-分辨率适配" class="headerlink" title="React native 分辨率适配"></a>React native 分辨率适配</h1><p><a href="http://facebook.github.io/react-native/" target="_blank" rel="external">React Native</a> 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 <a href="https://facebook.github.io/react-native/docs/pixelratio.html" target="_blank" rel="external">PixelRatio</a>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import &#123;PixelRatio&#125; from &apos;react-native&apos;;</div><div class="line">const pt2px = pt=&gt;PixelRatio.getPixelSizeForLayoutSize(pt);</div><div class="line">const px2pt = px=&gt;PixelRatio.roundToNearestPixel(px);</div></pre></td></tr></table></figure>
+<p>设计师给你一个尺寸，比如100px*200px的View，按照下面的方式可实现设计还原：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;View style=&#123;&#123;width:px2pt(100),height:px2pt(200),backgroundColor:&quot;red&quot;&#125;&#125;/&gt;</div></pre></td></tr></table></figure>
+<p>这个时候，你或许会说，这也太麻烦了，每个有尺寸的地方我都得转么，能不能我直接用px写，当然可以，不过需要整体加个缩放系数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import &#123;PixelRatio,Dimensions&#125;&#125; from &apos;react-native&apos;;</div><div class="line">const pt2px = pt=&gt;PixelRatio.getPixelSizeForLayoutSize(pt);</div><div class="line">const px2pt = px=&gt;PixelRatio.roundToNearestPixel(px); let pxRatio = PixelRatio.get();</div><div class="line">let &#123;win_width,win_height&#125; = Dimensions.get(&quot;window&quot;); let scale = 1/pxRatio;</div><div class="line">let width = pt2px(win_width);</div><div class="line">let height = pt2px(win_height);</div><div class="line">const com = props=&gt;( &lt;View sytle=&#123;styles.container&#125;&gt; &lt;View style=&#123;&#123;width:100,height:200,backgroundColor:&quot;red&quot;&#125;&#125;/&gt; &lt;/View&gt;) const styles=&#123; container: &#123; width:width, height:height, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样处理后，在根节点内，你再也不用考虑pt的问题了，直接使用px即可。</p>
+<p>不过此时还有另外一个问题，设计尺寸是死的，屏幕大小是活的，得考虑分辨率适配啊，那在不同的分辨率下如何正确的实现设计师的设计呢？</p>
+<p>我们将使用一种游戏经常会用到得方案，fixedWidth/fixedHeight.</p>
+<blockquote>
+<p>fixedWidth 模式是保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器窗口，但只保持应用程序内容的原始宽度不变，高度可能会改变,简言之 <strong>宽度固定，高度自适应</strong> 。  </p>
+</blockquote>
+<h3 id="fixedHeight"><a href="#fixedHeight" class="headerlink" title="fixedHeight"></a>fixedHeight</h3><blockquote>
+<p>fixedHeight 模式是保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器窗口，但只保持应用程序内容的原始高度不变，宽度可能会改变,简言之 <strong>高度固定，宽度自适应</strong> 。  </p>
+</blockquote>
+<p>具体如何应用呢，别急，一步步来。<br>先来看看如何得到屏幕的像素宽高：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import &#123;Dimensions,PixelRatio&#125; from &apos;react-native&apos;; let &#123;width,height&#125; = Dimensions.get(&quot;window&quot;);</div><div class="line">let w =pt2px(width);</div><div class="line">let h = pt2px(height);</div></pre></td></tr></table></figure>
+<p>假定我们的设计尺寸是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let designSize = &#123;width:750,height:1336&#125;;</div></pre></td></tr></table></figure>
+<p>按照fixedWidth、fixedHeight的定义，我们计算下新的宽高：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//fixedWidth</div><div class="line">let scale = designSize.width/w;</div><div class="line">let winSize = &#123;width:designSize.width,height:h*scale&#125;; //fixedHeight</div><div class="line">let scale = designSize.height/h;</div><div class="line">let winSize = &#123;width:designSize.width*scale,height:designSize.height&#125;;</div></pre></td></tr></table></figure>
+<p>这个winsize就是最终实际用来布局的屏幕尺寸,此时我们又会多了一个分辨率适配的缩放系数，还记得我们前一个我们添加的为了使用px的缩放系数么，我们在这里做一个整合：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import &#123;PixelRatio,Dimensions&#125;&#125; from &apos;react-native&apos;;</div><div class="line">const pt2px = pt=&gt;PixelRatio.getPixelSizeForLayoutSize(pt);</div><div class="line">const px2pt = px=&gt;PixelRatio.roundToNearestPixel(px); let designSize = &#123;width:750,height:1336&#125;; let pxRatio = PixelRatio.get();</div><div class="line">let &#123;win_width,win_height&#125; = Dimensions.get(&quot;window&quot;); let width = pt2px(win_width);</div><div class="line">let height = pt2px(win_height); let design_scale = designSize.width/width;</div><div class="line">height = height*design_scale let scale = 1/pxRatio/design_scale; const com = props=&gt;( &lt;View sytle=&#123;styles.container&#125;&gt; &lt;View style=&#123;&#123;width:100,height:200,backgroundColor:&quot;red&quot;&#125;&#125;/&gt; &lt;/View&gt;) const styles=&#123; container: &#123; width:width, height:height, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在后续的开发中将不必再关注适配的问题，只需要按照设计师给的尺寸实现布局即可。</p>
+<p>最后再附上一个工具类 Resolution.js：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import React, &#123;Component, PropTypes&#125; from &apos;react&apos;;</div><div class="line">import &#123; Dimensions, PixelRatio, Platform, StatusBar, View</div><div class="line">&#125; from &apos;react-native&apos;; let props = &#123;&#125;;</div><div class="line">export default class Resolution &#123; static get(useFixWidth = true)&#123; return useFixWidth?&#123;...props.fw&#125;:&#123;...props.fh&#125; &#125; static setDesignSize(dwidth=750,dheight=1336,dim=&quot;window&quot;)&#123; let designSize = &#123;width:dwidth,height:dheight&#125;; let navHeight = Platform.OS === &apos;android&apos; ? StatusBar.currentHeight : 64; let pxRatio = PixelRatio.get(dim); let &#123;width,height&#125; = Dimensions.get(dim); if(dim != &quot;screen&quot;)height-=navHeight; let w = PixelRatio.getPixelSizeForLayoutSize(width); let h = PixelRatio.getPixelSizeForLayoutSize(height); let fw_design_scale = designSize.width/w; fw_width = designSize.width; fw_height = h*fw_design_scale; fw_scale = 1/pxRatio/fw_design_scale; let fh_design_scale = designSize.height/h; fh_width = w*fh_design_scale; fh_height = designSize.height; fh_scale = 1/pxRatio/fh_design_scale; props.fw = &#123;width:fw_width,height:fw_height,scale:fw_scale,navHeight&#125;; props.fh = &#123;width:fh_width,height:fh_height,scale:fh_scale,navHeight&#125;; &#125; static FixWidthView = (p) =&gt; &#123; let &#123;width,height,scale,navHeight&#125; = props.fw; return ( &lt;View &#123;...p&#125; style=&#123;&#123; marginTop:navHeight, width:width, height:height, backgroundColor: &apos;transparent&apos;, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;&#125;&gt; &lt;/View&gt; ); &#125;; static FixHeightView = (p) =&gt; &#123; let &#123;width,height,scale,navHeight&#125; = props.fh; return ( &lt;View &#123;...p&#125; style=&#123;&#123; marginTop:navHeight, width:width, height:height, backgroundColor: &apos;transparent&apos;, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;&#125;&gt; &#123;p.children&#125; &lt;/View&gt; ); &#125;;</div><div class="line">&#125;;</div><div class="line">//init</div><div class="line">Resolution.setDesignSize();</div></pre></td></tr></table></figure>
+<p>How to use:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line">import &#123; AppRegistry, StyleSheet, Text, Image, View</div><div class="line">&#125; from &apos;react-native&apos;; import Resolution from &quot;./Resolution&quot; export default class tets extends Component &#123; render() &#123; return ( &lt;Resolution.FixWidthView style=&#123;styles.container&#125;&gt; &lt;Image source=&#123;require(&quot;./assets/bg_day.jpg&quot;)&#125; style=&#123;&#123;position:&quot;absolute&quot;&#125;&#125;/&gt; &lt;Text style=&#123;styles.welcome&#125;&gt; Welcome to React Native! &lt;/Text&gt; &lt;Text style=&#123;styles.instructions&#125;&gt; To get started, edit index.ios.js &lt;/Text&gt; &lt;Text style=&#123;styles.instructions&#125;&gt; Press Cmd+R to reload,&#123;&apos;\n&apos;&#125; Cmd+D or shake for dev menu &lt;/Text&gt; &lt;/Resolution.FixWidthView&gt; ); &#125;</div><div class="line">&#125; const styles = StyleSheet.create(&#123; container: &#123; flex: 0, justifyContent: &apos;center&apos;, alignItems: &apos;center&apos;, // backgroundColor: &apos;\#ff0000&apos;, &#125;, welcome: &#123; fontSize: 20, textAlign: &apos;center&apos;, margin: 10, backgroundColor:&quot;transparent&quot; &#125;, instructions: &#123; backgroundColor:&quot;transparent&quot;, textAlign: &apos;center&apos;, color: 0xffff, marginBottom: 5, &#125;,</div><div class="line">&#125;); AppRegistry.registerComponent(&apos;rn_resolution&apos;, () =&gt; tets);</div></pre></td></tr></table></figure>
+<p>bg_day.jpg的尺寸是750*1500，上面的程序在所有的分辨率下图片都能正确显示。</p>
+<p>这里有个demo： <a href="https://github.com/TerranTian/rn_resolution" target="_blank" rel="external">Github</a> ，如果解决你的问题了，记得给我加星哦~~</p>
+<p>另外：不同分辨率下背景图片尺寸如何选择，移步另一篇博文： <a href="http://www.jianshu.com/p/b4bfc7ba11b0" target="_blank" rel="external">《分辨率适配的取值范围》</a></p>
+<p><a href="http://www.jianshu.com/p/7836523b4d20" target="_blank" rel="external">React native 分辨率适配</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/06/28/React Nativ 组件设计和分解思考/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/React Nativ 组件设计和分解思考/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T14:19:51+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/React Nativ 组件设计和分解思考/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/React Nativ 组件设计和分解思考/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/06/28/React Native组件设计与分解思考/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/06/28/React Native组件设计与分解思考/" itemprop="url">在React Native中用WebView打开非HTTPS的的站点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-28T14:13:28+08:00">
+                2017-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/06/28/React Native组件设计与分解思考/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/06/28/React Native组件设计与分解思考/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="React-Native组件设计与分解思考"><a href="#React-Native组件设计与分解思考" class="headerlink" title="React Native组件设计与分解思考"></a>React Native组件设计与分解思考</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/25/前端工作流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/25/前端工作流/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-25T14:10:38+08:00">
+                2017-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/25/前端工作流/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/05/25/前端工作流/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前端工作流"><a href="#前端工作流" class="headerlink" title="前端工作流"></a>前端工作流</h2><h3 id="转译"><a href="#转译" class="headerlink" title="转译"></a>转译</h3><p><em>即转换+编译的一种技术，用来将ES6代码转换为可以在ES5的环境中工作的工具，现在较常用的是使用babel编译器进行转译</em></p>
+<h3 id="开发者工具控制台"><a href="#开发者工具控制台" class="headerlink" title="开发者工具控制台"></a>开发者工具控制台</h3><p><em>打开一个新的标签页：在地址栏输入 about:blank</em></p>
+<p><em>在控制台中一次键入多行，新开一行不执行代码：shift + enter</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1214,663 +1781,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/15/abc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Wei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ye Wei's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/15/abc/" itemprop="url">MySQL忘记密码后重置密码( Mac )</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T10:48:41+08:00">
-                2017-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/05/15/abc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/15/abc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。</p>
-</blockquote>
-<p>   这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。给自己点赞。不多说了，一步一步跟我</p>
-<ul>
-<li>走关闭MySQL服务器</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /usr/local/mysql/support-files/mysql.server stop</div></pre></td></tr></table></figure>
-<p>或者在偏好设置里点击MySQL然后将其关闭</p>
-<ul>
-<li>进入MySQL的二进制命令目录下</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /usr/local/mysql/bin</div></pre></td></tr></table></figure>
-<ul>
-<li>获取MySQL操作权限</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo su</div></pre></td></tr></table></figure>
-<ul>
-<li><p>重启MySQL服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./mysqld_safe --skip-grant-tables</div></pre></td></tr></table></figure>
-</li>
-<li><p>重开个终端</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li>为了在终端可以使用MySQL的命令，需要配置一下，运行下面两条命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">alias mysql=/usr/local/mysql/bin/mysql</div><div class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladminx</div></pre></td></tr></table></figure>
-<p>使用这种方法进行配置，一旦终端关闭了，就又得重新配置了，最好的方法是将MySQL的bin目录加入系统PATH，我用的终端是zsh，所以讲命令配置在.zshrc，如果是其他终端，修改的是相应的文件( 例如：bash -&gt; ./.bashrc )</p>
-<p>打开.zshrc, 添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export PATH=$PATH:/usr/local/mysql/bin</div></pre></td></tr></table></figure></p>
-<p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ./.zshrc</div></pre></td></tr></table></figure></p>
-<p>输入mysql 进入mysql命令模式</p>
-<p>输入use mysql 进入mysql数据库</p>
-<p>输入flush privileges 获取修改密码的权限</p>
-<p>输入set password for ‘root’@’localhost’=password(‘新密码’) 修改密码</p>
-<p>恭喜你，密码修改成功</p>
-<p>使用新密码登录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure>
-<p>回车后输入新密码<br><img src="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=8fe78e62" alt=""></p>
-<p>出现上面这个就说明成功登录MySQL</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/04/13/abc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Wei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ye Wei's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/13/abc/" itemprop="url">Mac 生成 ssh-key</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T22:20:26+08:00">
-                2017-04-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/13/abc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/13/abc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>用Git下载代码得步骤<br>1.首先需要创建公钥，在命令行中输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;ben@xxx.com&quot;</div></pre></td></tr></table></figure>
-<p>然后输入路径，密码之类的，如果不输入，工程就会保存到根目录下面，密码也为空。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~/.ssh/id_rsa是私钥，~/.ssh/id_rsa.pub是公钥</div></pre></td></tr></table></figure>
-<p>2.接着打开公钥：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
-<p>这里会得到一段很长的编码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuYZIchz3THIcc/wH0ZB5WZYqe2iBVUNqSzfrgxBvJCZkFHWiUZhA/4omNud/27PVT/FADV9qSvrX7ifP05Cbl6mhE4uJjxOQRNoPdQQcsTEFh5vDvOeiJOT1CoFb9WLGg49Xml4yJmFJqv/Kz5hCe7LEWRYJH6tmaVG0qi9nwAZmjfTQpSWu07eAKB9wAbK6stCdnd5JvMq7IsNNylbwDlXf0RQA4RpppO+14oNBqivhi5ftBPjP15+aWKpnXUxkGMVAefKTvwsyw1T0H2sj+ILVFM4d5xpxu3jPHebqh363OwPPLMsoUy9VhQ3YDtMxt4vyOxvpJ9ekMGlDn/9ut linwenbang@yolanda.hk</div></pre></td></tr></table></figure>
-<p>然后在进入GitLab或者Gitblit的个人中心，选择ssh key的配置，将新生成的ssh-key复制进去即可，配置完成之后即可克隆你想要克隆的项目了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/04/05/abc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Wei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ye Wei's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/05/abc/" itemprop="url">前端学习路径</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T21:54:30+08:00">
-                2017-04-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/05/abc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/05/abc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="学习路径"><a href="#学习路径" class="headerlink" title="学习路径"></a>学习路径</h2><h3 id="视频学习"><a href="#视频学习" class="headerlink" title="视频学习"></a>视频学习</h3><ul>
-<li>妙味教程</li>
-<li>慕课网</li>
-<li>网易云课堂</li>
-</ul>
-<h3 id="技术社区"><a href="#技术社区" class="headerlink" title="技术社区"></a>技术社区</h3><ul>
-<li>掘金  </li>
-<li>开发者头条</li>
-<li>推酷</li>
-</ul>
-<h3 id="Github开源项目"><a href="#Github开源项目" class="headerlink" title="Github开源项目"></a>Github开源项目</h3><ul>
-<li>Javascript Day30 挑战</li>
-<li>FreeCodeCamp</li>
-<li>阮一峰</li>
-</ul>
-<h3 id="精品系列教程"><a href="#精品系列教程" class="headerlink" title="精品系列教程"></a>精品系列教程</h3><ul>
-<li><p>从草根到英雄</p>
-<p>​</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/04/01/HEXO+Github/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Wei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ye Wei's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/01/HEXO+Github/" itemprop="url">HEXO+Github,搭建属于自己的博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-01T22:44:23+08:00">
-                2017-04-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/blog/" itemprop="url" rel="index">
-                    <span itemprop="name">blog</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/01/HEXO+Github/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/01/HEXO+Github/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><h3 id="安装node-必须"><a href="#安装node-必须" class="headerlink" title="安装node( 必须 )"></a>安装node( 必须 )</h3><p>作用：用来生成静态页面的 到Node.js<a href="https://nodejs.org/" target="_blank" rel="external">官网</a>下载相应平台的最新版本，一路安装即可。</p>
-<h3 id="安装git-必须"><a href="#安装git-必须" class="headerlink" title="安装git( 必须 )"></a>安装git( 必须 )</h3><p>作用：把本地的hexo内容提交到github上去. 安装Xcode就自带有Git</p>
-<h3 id="申请github-必须"><a href="#申请github-必须" class="headerlink" title="申请github( 必须 )"></a>申请github( 必须 )</h3><p>作用：是用来做博客的远程创库、域名、服务器之类的，怎么与本地hexo建立连接等下讲。 <a href="https://github.com/" target="_blank" rel="external">github</a>账号我也不再啰嗦了,没有的话直接申请就行了，跟一般的注册账号差不多，SSH Keys，看你自己了，可以不配制，不配置的话以后每次对自己的博客有改动提交的时候就要手动输入账号密码，配置了就不需要了，怎么配置我就不多说了，网上有很多教程。</p>
-<h3 id="正式安装HEXO"><a href="#正式安装HEXO" class="headerlink" title="正式安装HEXO"></a>正式安装HEXO</h3><p>Node和Git都安装好后，可执行如下命令安装hexo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>创建一个文件夹，如：Blog，cd到Blog里执行hexo init的。命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
-<h3 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h3><p>继续再Blog目录下执行如下命令，生成静态页面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate (hexo g)</div></pre></td></tr></table></figure>
-<h3 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h3><p>启动本地服务，进行文章预览调试，命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1920,7 +1830,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

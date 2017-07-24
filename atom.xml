@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://weiTimes.github.io/"/>
-  <updated>2017-05-20T10:27:50.000Z</updated>
+  <updated>2017-07-24T08:47:20.000Z</updated>
   <id>https://weiTimes.github.io/</id>
   
   <author>
@@ -14,6 +14,117 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React native 分辨率适配</title>
+    <link href="https://weiTimes.github.io/2017/07/24/React%20native%20%E5%88%86%E8%BE%A8%E7%8E%87%E9%80%82%E9%85%8D/"/>
+    <id>https://weiTimes.github.io/2017/07/24/React native 分辨率适配/</id>
+    <published>2017-07-24T08:44:51.000Z</published>
+    <updated>2017-07-24T08:47:20.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="React-native-分辨率适配"><a href="#React-native-分辨率适配" class="headerlink" title="React native 分辨率适配"></a>React native 分辨率适配</h1><p><a href="http://facebook.github.io/react-native/" target="_blank" rel="external">React Native</a> 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 <a href="https://facebook.github.io/react-native/docs/pixelratio.html" target="_blank" rel="external">PixelRatio</a>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import &#123;PixelRatio&#125; from &apos;react-native&apos;;</div><div class="line">const pt2px = pt=&gt;PixelRatio.getPixelSizeForLayoutSize(pt);</div><div class="line">const px2pt = px=&gt;PixelRatio.roundToNearestPixel(px);</div></pre></td></tr></table></figure>
+<p>设计师给你一个尺寸，比如100px*200px的View，按照下面的方式可实现设计还原：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;View style=&#123;&#123;width:px2pt(100),height:px2pt(200),backgroundColor:&quot;red&quot;&#125;&#125;/&gt;</div></pre></td></tr></table></figure>
+<p>这个时候，你或许会说，这也太麻烦了，每个有尺寸的地方我都得转么，能不能我直接用px写，当然可以，不过需要整体加个缩放系数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">import &#123;PixelRatio,Dimensions&#125;&#125; from &apos;react-native&apos;;</div><div class="line">const pt2px = pt=&gt;PixelRatio.getPixelSizeForLayoutSize(pt);</div><div class="line">const px2pt = px=&gt;PixelRatio.roundToNearestPixel(px); let pxRatio = PixelRatio.get();</div><div class="line">let &#123;win_width,win_height&#125; = Dimensions.get(&quot;window&quot;); let scale = 1/pxRatio;</div><div class="line">let width = pt2px(win_width);</div><div class="line">let height = pt2px(win_height);</div><div class="line">const com = props=&gt;( &lt;View sytle=&#123;styles.container&#125;&gt; &lt;View style=&#123;&#123;width:100,height:200,backgroundColor:&quot;red&quot;&#125;&#125;/&gt; &lt;/View&gt;) const styles=&#123; container: &#123; width:width, height:height, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样处理后，在根节点内，你再也不用考虑pt的问题了，直接使用px即可。</p>
+<p>不过此时还有另外一个问题，设计尺寸是死的，屏幕大小是活的，得考虑分辨率适配啊，那在不同的分辨率下如何正确的实现设计师的设计呢？</p>
+<p>我们将使用一种游戏经常会用到得方案，fixedWidth/fixedHeight.</p>
+<blockquote>
+<p>fixedWidth 模式是保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器窗口，但只保持应用程序内容的原始宽度不变，高度可能会改变,简言之 <strong>宽度固定，高度自适应</strong> 。  </p>
+</blockquote>
+<h3 id="fixedHeight"><a href="#fixedHeight" class="headerlink" title="fixedHeight"></a>fixedHeight</h3><blockquote>
+<p>fixedHeight 模式是保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器窗口，但只保持应用程序内容的原始高度不变，宽度可能会改变,简言之 <strong>高度固定，宽度自适应</strong> 。  </p>
+</blockquote>
+<p>具体如何应用呢，别急，一步步来。<br>先来看看如何得到屏幕的像素宽高：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import &#123;Dimensions,PixelRatio&#125; from &apos;react-native&apos;; let &#123;width,height&#125; = Dimensions.get(&quot;window&quot;);</div><div class="line">let w =pt2px(width);</div><div class="line">let h = pt2px(height);</div></pre></td></tr></table></figure>
+<p>假定我们的设计尺寸是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let designSize = &#123;width:750,height:1336&#125;;</div></pre></td></tr></table></figure>
+<p>按照fixedWidth、fixedHeight的定义，我们计算下新的宽高：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//fixedWidth</div><div class="line">let scale = designSize.width/w;</div><div class="line">let winSize = &#123;width:designSize.width,height:h*scale&#125;; //fixedHeight</div><div class="line">let scale = designSize.height/h;</div><div class="line">let winSize = &#123;width:designSize.width*scale,height:designSize.height&#125;;</div></pre></td></tr></table></figure>
+<p>这个winsize就是最终实际用来布局的屏幕尺寸,此时我们又会多了一个分辨率适配的缩放系数，还记得我们前一个我们添加的为了使用px的缩放系数么，我们在这里做一个整合：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import &#123;PixelRatio,Dimensions&#125;&#125; from &apos;react-native&apos;;</div><div class="line">const pt2px = pt=&gt;PixelRatio.getPixelSizeForLayoutSize(pt);</div><div class="line">const px2pt = px=&gt;PixelRatio.roundToNearestPixel(px); let designSize = &#123;width:750,height:1336&#125;; let pxRatio = PixelRatio.get();</div><div class="line">let &#123;win_width,win_height&#125; = Dimensions.get(&quot;window&quot;); let width = pt2px(win_width);</div><div class="line">let height = pt2px(win_height); let design_scale = designSize.width/width;</div><div class="line">height = height*design_scale let scale = 1/pxRatio/design_scale; const com = props=&gt;( &lt;View sytle=&#123;styles.container&#125;&gt; &lt;View style=&#123;&#123;width:100,height:200,backgroundColor:&quot;red&quot;&#125;&#125;/&gt; &lt;/View&gt;) const styles=&#123; container: &#123; width:width, height:height, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在后续的开发中将不必再关注适配的问题，只需要按照设计师给的尺寸实现布局即可。</p>
+<p>最后再附上一个工具类 Resolution.js：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import React, &#123;Component, PropTypes&#125; from &apos;react&apos;;</div><div class="line">import &#123; Dimensions, PixelRatio, Platform, StatusBar, View</div><div class="line">&#125; from &apos;react-native&apos;; let props = &#123;&#125;;</div><div class="line">export default class Resolution &#123; static get(useFixWidth = true)&#123; return useFixWidth?&#123;...props.fw&#125;:&#123;...props.fh&#125; &#125; static setDesignSize(dwidth=750,dheight=1336,dim=&quot;window&quot;)&#123; let designSize = &#123;width:dwidth,height:dheight&#125;; let navHeight = Platform.OS === &apos;android&apos; ? StatusBar.currentHeight : 64; let pxRatio = PixelRatio.get(dim); let &#123;width,height&#125; = Dimensions.get(dim); if(dim != &quot;screen&quot;)height-=navHeight; let w = PixelRatio.getPixelSizeForLayoutSize(width); let h = PixelRatio.getPixelSizeForLayoutSize(height); let fw_design_scale = designSize.width/w; fw_width = designSize.width; fw_height = h*fw_design_scale; fw_scale = 1/pxRatio/fw_design_scale; let fh_design_scale = designSize.height/h; fh_width = w*fh_design_scale; fh_height = designSize.height; fh_scale = 1/pxRatio/fh_design_scale; props.fw = &#123;width:fw_width,height:fw_height,scale:fw_scale,navHeight&#125;; props.fh = &#123;width:fh_width,height:fh_height,scale:fh_scale,navHeight&#125;; &#125; static FixWidthView = (p) =&gt; &#123; let &#123;width,height,scale,navHeight&#125; = props.fw; return ( &lt;View &#123;...p&#125; style=&#123;&#123; marginTop:navHeight, width:width, height:height, backgroundColor: &apos;transparent&apos;, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;&#125;&gt; &lt;/View&gt; ); &#125;; static FixHeightView = (p) =&gt; &#123; let &#123;width,height,scale,navHeight&#125; = props.fh; return ( &lt;View &#123;...p&#125; style=&#123;&#123; marginTop:navHeight, width:width, height:height, backgroundColor: &apos;transparent&apos;, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;&#125;&gt; &#123;p.children&#125; &lt;/View&gt; ); &#125;;</div><div class="line">&#125;;</div><div class="line">//init</div><div class="line">Resolution.setDesignSize();</div></pre></td></tr></table></figure>
+<p>How to use:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from &apos;react&apos;;</div><div class="line">import &#123; AppRegistry, StyleSheet, Text, Image, View</div><div class="line">&#125; from &apos;react-native&apos;; import Resolution from &quot;./Resolution&quot; export default class tets extends Component &#123; render() &#123; return ( &lt;Resolution.FixWidthView style=&#123;styles.container&#125;&gt; &lt;Image source=&#123;require(&quot;./assets/bg_day.jpg&quot;)&#125; style=&#123;&#123;position:&quot;absolute&quot;&#125;&#125;/&gt; &lt;Text style=&#123;styles.welcome&#125;&gt; Welcome to React Native! &lt;/Text&gt; &lt;Text style=&#123;styles.instructions&#125;&gt; To get started, edit index.ios.js &lt;/Text&gt; &lt;Text style=&#123;styles.instructions&#125;&gt; Press Cmd+R to reload,&#123;&apos;\n&apos;&#125; Cmd+D or shake for dev menu &lt;/Text&gt; &lt;/Resolution.FixWidthView&gt; ); &#125;</div><div class="line">&#125; const styles = StyleSheet.create(&#123; container: &#123; flex: 0, justifyContent: &apos;center&apos;, alignItems: &apos;center&apos;, // backgroundColor: &apos;\#ff0000&apos;, &#125;, welcome: &#123; fontSize: 20, textAlign: &apos;center&apos;, margin: 10, backgroundColor:&quot;transparent&quot; &#125;, instructions: &#123; backgroundColor:&quot;transparent&quot;, textAlign: &apos;center&apos;, color: 0xffff, marginBottom: 5, &#125;,</div><div class="line">&#125;); AppRegistry.registerComponent(&apos;rn_resolution&apos;, () =&gt; tets);</div></pre></td></tr></table></figure>
+<p>bg_day.jpg的尺寸是750*1500，上面的程序在所有的分辨率下图片都能正确显示。</p>
+<p>这里有个demo： <a href="https://github.com/TerranTian/rn_resolution" target="_blank" rel="external">Github</a> ，如果解决你的问题了，记得给我加星哦~~</p>
+<p>另外：不同分辨率下背景图片尺寸如何选择，移步另一篇博文： <a href="http://www.jianshu.com/p/b4bfc7ba11b0" target="_blank" rel="external">《分辨率适配的取值范围》</a></p>
+<p><a href="http://www.jianshu.com/p/7836523b4d20" target="_blank" rel="external">React native 分辨率适配</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;React-native-分辨率适配&quot;&gt;&lt;a href=&quot;#React-native-分辨率适配&quot; class=&quot;headerlink&quot; title=&quot;React native 分辨率适配&quot;&gt;&lt;/a&gt;React native 分辨率适配&lt;/h1&gt;&lt;p&gt;&lt;a hre
+    
+    </summary>
+    
+      <category term="技术" scheme="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="React Native" scheme="https://weiTimes.github.io/tags/React-Native/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://weiTimes.github.io/2017/06/28/React%20Nativ%20%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%92%8C%E5%88%86%E8%A7%A3%E6%80%9D%E8%80%83/"/>
+    <id>https://weiTimes.github.io/2017/06/28/React Nativ 组件设计和分解思考/</id>
+    <published>2017-06-28T06:19:51.000Z</published>
+    <updated>2017-06-28T06:19:51.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>在React Native中用WebView打开非HTTPS的的站点</title>
+    <link href="https://weiTimes.github.io/2017/06/28/React%20Native%E7%BB%84%E4%BB%B6%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E8%A7%A3%E6%80%9D%E8%80%83/"/>
+    <id>https://weiTimes.github.io/2017/06/28/React Native组件设计与分解思考/</id>
+    <published>2017-06-28T06:13:28.000Z</published>
+    <updated>2017-06-28T06:13:28.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="React-Native组件设计与分解思考"><a href="#React-Native组件设计与分解思考" class="headerlink" title="React Native组件设计与分解思考"></a>React Native组件设计与分解思考</h2>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;React-Native组件设计与分解思考&quot;&gt;&lt;a href=&quot;#React-Native组件设计与分解思考&quot; class=&quot;headerlink&quot; title=&quot;React Native组件设计与分解思考&quot;&gt;&lt;/a&gt;React Native组件设计与分解思考&lt;/
+    
+    </summary>
+    
+      <category term="技术" scheme="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="React Native" scheme="https://weiTimes.github.io/tags/React-Native/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://weiTimes.github.io/2017/05/25/%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81/"/>
+    <id>https://weiTimes.github.io/2017/05/25/前端工作流/</id>
+    <published>2017-05-25T06:10:38.000Z</published>
+    <updated>2017-05-25T08:17:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前端工作流"><a href="#前端工作流" class="headerlink" title="前端工作流"></a>前端工作流</h2><h3 id="转译"><a href="#转译" class="headerlink" title="转译"></a>转译</h3><p><em>即转换+编译的一种技术，用来将ES6代码转换为可以在ES5的环境中工作的工具，现在较常用的是使用babel编译器进行转译</em></p>
+<h3 id="开发者工具控制台"><a href="#开发者工具控制台" class="headerlink" title="开发者工具控制台"></a>开发者工具控制台</h3><p><em>打开一个新的标签页：在地址栏输入 about:blank</em></p>
+<p><em>在控制台中一次键入多行，新开一行不执行代码：shift + enter</em></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前端工作流&quot;&gt;&lt;a href=&quot;#前端工作流&quot; class=&quot;headerlink&quot; title=&quot;前端工作流&quot;&gt;&lt;/a&gt;前端工作流&lt;/h2&gt;&lt;h3 id=&quot;转译&quot;&gt;&lt;a href=&quot;#转译&quot; class=&quot;headerlink&quot; title=&quot;转译&quot;&gt;&lt;/a&gt;转
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>React Native Android 与 IOS的适配</title>
@@ -57,7 +168,7 @@
     <link href="https://weiTimes.github.io/2017/05/17/%E5%9C%A8React%20Native%E4%B8%AD%E7%94%A8WebView%E6%89%93%E5%BC%80%E9%9D%9EHTTPS%E7%9A%84%E7%9A%84%E7%AB%99%E7%82%B9/"/>
     <id>https://weiTimes.github.io/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/</id>
     <published>2017-05-17T08:30:39.000Z</published>
-    <updated>2017-05-17T09:49:04.000Z</updated>
+    <updated>2017-05-24T10:56:24.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="在React-Native中用WebView打开非HTTPS的的站点"><a href="#在React-Native中用WebView打开非HTTPS的的站点" class="headerlink" title="在React Native中用WebView打开非HTTPS的的站点"></a>在React Native中用WebView打开非HTTPS的的站点</h2><blockquote>
 <p>在React Native应用中使用WebView可以复用已经写好的web页面。</p>
