@@ -70,11 +70,11 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>前端工作流</title>
     <link href="https://weiTimes.github.io/2017/05/25/%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81/"/>
     <id>https://weiTimes.github.io/2017/05/25/前端工作流/</id>
     <published>2017-05-25T06:10:38.000Z</published>
-    <updated>2017-05-25T08:17:52.000Z</updated>
+    <updated>2017-08-11T01:26:53.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="前端工作流"><a href="#前端工作流" class="headerlink" title="前端工作流"></a>前端工作流</h2><h3 id="转译"><a href="#转译" class="headerlink" title="转译"></a>转译</h3><p><em>即转换+编译的一种技术，用来将ES6代码转换为可以在ES5的环境中工作的工具，现在较常用的是使用babel编译器进行转译</em></p>
 <h3 id="开发者工具控制台"><a href="#开发者工具控制台" class="headerlink" title="开发者工具控制台"></a>开发者工具控制台</h3><p><em>打开一个新的标签页：在地址栏输入 about:blank</em></p>
@@ -86,6 +86,8 @@
       &lt;h2 id=&quot;前端工作流&quot;&gt;&lt;a href=&quot;#前端工作流&quot; class=&quot;headerlink&quot; title=&quot;前端工作流&quot;&gt;&lt;/a&gt;前端工作流&lt;/h2&gt;&lt;h3 id=&quot;转译&quot;&gt;&lt;a href=&quot;#转译&quot; class=&quot;headerlink&quot; title=&quot;转译&quot;&gt;&lt;/a&gt;转
     
     </summary>
+    
+      <category term="技术" scheme="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
   </entry>
