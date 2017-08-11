@@ -265,6 +265,264 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/08/11/abc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ye Wei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ye Wei's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/11/abc/" itemprop="url">Mac上设置MySQL默认编码为UTF-8</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-11T10:09:42+08:00">
+                2017-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/11/abc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/11/abc/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Immutable-详解及-React-中实践-知乎专栏"><a href="#Immutable-详解及-React-中实践-知乎专栏" class="headerlink" title="Immutable 详解及 React 中实践 - 知乎专栏"></a>Immutable 详解及 React 中实践 - 知乎专栏</h1><p>{“database”:{“Post”:{“20295971”:{“title”:”Immutable 详解及 React 中实践”,”author”:”camsong”,”content”:”</p>
+<blockquote>
+<p>Shared mutable state is the root of all evil（共享的可变状态是万恶之源）  </p>
+<p>– Pete Hunt  </p>
+</blockquote>
+<p>有人说 Immutable 可以给 React 应用带来数十倍的提升，也有人说 Immutable 的引入是近期 JavaScript 中伟大的发明，因为同期 React 太火，它的光芒被掩盖了。这些至少说明 Immutable 是很有价值的，下面我们来一探究竟。<br>JavaScript 中的对象一般是可变的（Mutable），因为使用了引用赋值，新的对象简单的引用了原始对象，改变新的对象将影响到原始对象。如 <code>foo={a: 1}; bar=foo; bar.a=2</code> 你会发现此时 <code>foo.a</code> 也被改成了 <code>2</code> 。虽然这样做可以节约内存，但当应用复杂后，这就造成了非常大的隐患，Mutable 带来的优点变得得不偿失。为了解决这个问题，一般的做法是使用 shallowCopy（浅拷贝）或 deepCopy（深拷贝）来避免被修改，但这样做造成了 CPU 和内存的浪费。</p>
+<p>Immutable 可以很好地解决这些问题。</p>
+<h2 id="什么是-Immutable-Data"><a href="#什么是-Immutable-Data" class="headerlink" title="什么是 Immutable Data"></a>什么是 Immutable Data</h2><p>Immutable Data 就是一旦创建，就不能再被更改的数据。对 Immutable 对象的任何修改或添加删除操作都会返回一个新的 Immutable 对象。Immutable 实现的原理是 <strong>Persistent Data Structure</strong> （持久化数据结构），也就是使用旧数据创建新数据时，要保证旧数据同时可用且不变。同时为了避免 deepCopy 把所有节点都复制一遍带来的性能损耗，Immutable 使用了 <strong>Structural Sharing</strong> （结构共享），即如果对象树中一个节点发生变化，只修改这个节点和受它影响的父节点，其它节点则进行共享。请看下面动画：<br>&gt; 擦，费了好大劲做了个 Gif 动画，竟然被强制转成了静态图，请移步 <a href="https://zhuanlan.zhihu.com/%22http://link.zhihu.com/?target=http%3A//img.alicdn.com/tps/i2/TB1zzi_KXXXXXctXFXXbrb8OVXX-613-575.gif%5C%22" target="_blank" rel="external">http://img.alicdn.com/tps/i2/TB1zzi_KXXXXXctXFXXbrb8OVXX-613-575.gif</a> 观看</p>
+<p>目前流行的 Immutable 库有两个：</p>
+<ol>
+<li>immutable.js</li>
+</ol>
+<p>Facebook 工程师 Lee Byron 花费 3 年时间打造，与 React 同期出现，但没有被默认放到 React 工具集里（React 提供了简化的 Helper）。它内部实现了一套完整的 Persistent Data Structure，还有很多易用的数据类型。像 <code>Collection</code> 、 <code>List</code> 、 <code>Map</code> 、 <code>Set</code> 、 <code>Record</code> 、 <code>Seq</code> 。有非常全面的 <code>map</code> 、 <code>filter</code> 、 <code>groupBy</code> 、 <code>reduce</code>  <code>find</code> 函数式操作方法。同时 API 也尽量与 Object 或 Array 类似。<br>其中有 3 种最重要的数据结构说明一下：（Java 程序员应该最熟悉了）</p>
+<ul>
+<li><p>Map：键值对集合，对应于 Object，ES6 也有专门的 Map 对象</p>
+</li>
+<li><p>List：有序可重复的列表，对应于 Array</p>
+</li>
+<li><p>Set：无序且不可重复的列表</p>
+</li>
+</ul>
+<ol>
+<li>seamless-immutable</li>
+</ol>
+<p>与 Immutable.js 学院派的风格不同，seamless-immutable 并没有实现完整的 Persistent Data Structure，而是使用 <code>Object.defineProperty</code> （因此只能在 IE9 及以上使用）扩展了 JavaScript 的 Array 和 Object 对象来实现，只支持 Array 和 Object 两种数据类型，API 基于与 Array 和 Object 操持不变。代码库非常小，压缩后下载只有 2K。而 Immutable.js 压缩后下载有 16K。</p>
+<p>下面上代码来感受一下两者的不同：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">// 原来的写法\nlet foo = &#123;a: &#123;b: 1&#125;&#125;;\nlet bar = foo;\nbar.a.b = 2;\nconsole.log(foo.a.b); // 打印 2\nconsole.log(foo === bar); // 打印 true\n\n// 使用 immutable.js 后\nimport Immutable from &apos;immutable&apos;;\nfoo = Immutable.fromJS(&#123;a: &#123;b: 1&#125;&#125;);\nbar = foo.setIn([&apos;a&apos;, &apos;b&apos;], 2); // 使用 setIn 赋值\nconsole.log(foo.getIn([&apos;a&apos;, &apos;b&apos;])); // 使用 getIn 取值，打印 1\nconsole.log(foo === bar); // 打印 false\n\n// 使用 seamless-immutable.js 后\nimport SImmutable from &apos;seamless-immutable&apos;;\nfoo = SImmutable(&#123;a: &#123;b: 1&#125;&#125;)\nbar = foo.merge(&#123;a: &#123; b: 2&#125;&#125;) // 使用 merge 赋值\nconsole.log(foo.a.b); // 像原生 Object 一样取值，打印 1\n\nconsole.log(foo === bar); // 打印 false\n</div></pre></td></tr></table></figure>
+<h2 id="Immutable-优点"><a href="#Immutable-优点" class="headerlink" title="Immutable 优点"></a>Immutable 优点</h2><ol>
+<li>Immutable 降低了 Mutable 带来的复杂度<br>可变（Mutable）数据耦合了 Time 和 Value 的概念，造成了数据很难被回溯。</li>
+</ol>
+<p>比如下面一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function touchAndLog(touchFn) &#123;\n let data = &#123; key: &apos;value&apos; &#125;;\n touchFn(data);\n console.log(data.key); // 猜猜会打印什么？\n&#125;\n</div></pre></td></tr></table></figure>
+<p>在不查看 <code>touchFn</code> 的代码的情况下，因为不确定它对 <code>data</code> 做了什么，你是不可能知道会打印什么（这不是废话吗）。但如果 <code>data</code> 是 Immutable 的呢，你可以很肯定的知道打印的是 <code>value</code> 。</p>
+<ol>
+<li>节省内存<br>Immutable.js 使用了 Structure Sharing 会尽量复用内存。没有被引用的对象会被垃圾回收。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &#123; Map&#125; from &apos;immutable&apos;;\nlet a = Map(&#123;\n select: &apos;users&apos;,\n filter: Map(&#123; name: &apos;Cam&apos; &#125;)\n&#125;)\nlet b = a.set(&apos;select&apos;, &apos;people&apos;);\n\na === b; // false\n\na.get(&apos;filter&apos;) === b.get(&apos;filter&apos;); // true\n</div></pre></td></tr></table></figure>
+<p>上面 a 和 b 共享了没有变化的 <code>filter</code> 节点。</p>
+<ol>
+<li>Undo_Redo，Copy_Paste，甚至时间旅行这些功能做起来小菜一碟<br>因为每次数据都是不一样的，只要把这些数据放到一个数组里储存起来，想回退到哪里就拿出对应数据即可，很容易开发出撤销重做这种功能。</li>
+</ol>
+<p>后面我会提供 Flux 做 Undo 的示例。</p>
+<ol>
+<li>并发安全<br>传统的并发非常难做，因为要处理各种数据不一致问题，因此『聪明人』发明了各种锁来解决。但使用了 Immutable 之后，数据天生是不可变的， <strong>并发锁就不需要了</strong> 。</li>
+</ol>
+<p>然而现在并没什么卵用，因为 JavaScript 还是单线程运行的啊。但未来可能会加入，提前解决未来的问题不也挺好吗？</p>
+<ol>
+<li>拥抱函数式编程<br>Immutable 本身就是函数式编程中的概念，纯函数式编程比面向对象更适用于前端开发。因为只要输入一致，输出必然一致，这样开发的组件更易于调试和组装。</li>
+</ol>
+<p>像 ClojureScript，Elm 等函数式编程语言中的数据类型天生都是 Immutable 的，这也是为什么 ClojureScript 基于 React 的框架 — Om 性能比 React 还要好的原因。</p>
+<h2 id="使用-Immutable-的缺点"><a href="#使用-Immutable-的缺点" class="headerlink" title="使用 Immutable 的缺点"></a>使用 Immutable 的缺点</h2><ol>
+<li>需要学习新的 API</li>
+</ol>
+<p>No Comments</p>
+<ol>
+<li>增加了资源文件大小</li>
+</ol>
+<p>No Comments</p>
+<ol>
+<li>容易与原生对象混淆</li>
+</ol>
+<p>这点是我们使用 Immutable.js 过程中遇到最大的问题。写代码要做思维上的转变。</p>
+<p>虽然 Immutable.js 尽量尝试把 API 设计的原生对象类似，有的时候还是很难区别到底是 Immutable 对象还是原生对象，容易混淆操作。<br>Immutable 中的 Map 和 List 虽对应原生 Object 和 Array，但操作非常不同，比如你要用 <code>map.get(&#39;key&#39;)</code> 而不是 <code>map.key</code> ， <code>array.get(0)</code> 而不是 <code>array[0]</code> 。另外 Immutable 每次修改都会返回新对象，也很容易忘记赋值。<br>当使用外部库的时候，一般需要使用原生对象，也很容易忘记转换。<br>下面给出一些办法来避免类似问题发生：</p>
+<ul>
+<li><p>使用 Flow 或 TypeScript 这类有静态类型检查的工具</p>
+</li>
+<li><p>约定变量命名规则：如所有 Immutable 类型对象以 <code>$$</code> 开头。</p>
+</li>
+<li><p>使用 <code>Immutable.fromJS</code> 而不是 <code>Immutable.Map</code> 或 <code>Immutable.List</code> 来创建对象，这样可以避免 Immutable 和原生对象间的混用。</p>
+</li>
+</ul>
+<h2 id="更多认识"><a href="#更多认识" class="headerlink" title="更多认识"></a>更多认识</h2><ol>
+<li>Immutable.is</li>
+</ol>
+<p>两个 immutable 对象可以使用 <code>===</code> 来比较，这样是直接比较内存地址，性能最好。但即使两个对象的值是一样的，也会返回 <code>false</code> ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">let map1 = Immutable.Map(&#123;a:1, b:1, c:1&#125;);\nlet map2 = Immutable.Map(&#123;a:1, b:1, c:1&#125;);\nmap1 === map2; // false\n</div></pre></td></tr></table></figure>
+<p>为了直接比较对象的值，immutable.js 提供了 <code>Immutable.is</code> 来做『值比较』，结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Immutable.is(map1, map2); // true\n</div></pre></td></tr></table></figure>
+<p><code>Immutable.is</code> 比较的是两个对象的 <code>hashCode</code> 或 <code>valueOf</code> （对于 JavaScript 对象）。由于 immutable 内部使用了 Trie 数据结构来存储，只要两个对象的 <code>hashCode</code> 相等，值就是一样的。这样的算法避免了深度遍历比较，性能非常好。<br>后面会使用 <code>Immutable.is</code> 来减少 React 重复渲染，提高性能。<br>另外，还有 <a href="https://zhuanlan.zhihu.com/%22http://link.zhihu.com/?target=https%3A//github.com/swannodette/mori%5C%22" target="_blank" rel="external">mori</a>、<a href="https://zhuanlan.zhihu.com/%22http://link.zhihu.com/?target=https%3A//github.com/mquan/cortex%5C%22" target="_blank" rel="external">cortex</a> 等，因为类似就不再介绍。</p>
+<ol>
+<li>与 Object.freeze、const 区别</li>
+</ol>
+<p><code>Object.freeze</code> 和 ES6 中新加入的 <code>const</code> 都可以达到防止对象被篡改的功能，但它们是 shallowCopy 的。对象层级一深就要特殊处理了。</p>
+<ol>
+<li>Cursor 的概念</li>
+</ol>
+<p>这个 Cursor 和数据库中的游标是完全不同的概念。</p>
+<p>由于 Immutable 数据一般嵌套非常深，为了便于访问深层数据，Cursor 提供了可以直接访问这个深层数据的引用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import Immutable from &apos;immutable&apos;;\nimport Cursor from &apos;immutable/contrib/cursor&apos;;\n\nlet data = Immutable.fromJS(&#123; a: &#123; b: &#123; c: 1 &#125; &#125; &#125;);\n// 让 cursor 指向 &#123; c: 1 &#125;\nlet cursor = Cursor.from(data, [&apos;a&apos;, &apos;b&apos;], newData =&amp;gt; &#123;\n // 当 cursor 或其子 cursor 执行 update 时调用\n console.log(newData);\n&#125;);\n\ncursor.get(&apos;c&apos;); // 1\ncursor = cursor.update(&apos;c&apos;, x =&amp;gt; x + 1);\ncursor.get(&apos;c&apos;); // 2\n</div></pre></td></tr></table></figure>
+<h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><ol>
+<li>与 React 搭配使用，Pure Render</li>
+</ol>
+<p>熟悉 React 的都知道，React 做性能优化时有一个避免重复渲染的大招，就是使用 <code>shouldComponentUpdate()</code> ，但它默认返回 <code>true</code> ，即始终会执行 <code>render()</code> 方法，然后做 Virtual DOM 比较，并得出是否需要做真实 DOM 更新，这里往往会带来很多无必要的渲染并成为性能瓶颈。</p>
+<p>当然我们也可以在 <code>shouldComponentUpdate()</code> 中使用使用 deepCopy 和 deepCompare 来避免无必要的 <code>render()</code> ，但 <strong>deepCopy 和 deepCompare 一般都是非常耗性能的</strong> 。<br><strong>Immutable 则提供了简洁高效的判断数据是否变化的方法</strong> ，只需 <code>===</code> 和 <code>is</code> 比较就能知道是否需要执行 <code>render()</code> ，而这个 <strong>操作几乎 0 成本</strong> ，所以可以极大提高性能。修改后的 <code>shouldComponentUpdate</code> 是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &#123; is &#125; from &apos;immutable&apos;;\n\nshouldComponentUpdate: (nextProps = &#123;&#125;, nextState = &#123;&#125;) =&amp;gt; &#123;\n const thisProps = this.props || &#123;&#125;, thisState = this.state || &#123;&#125;;\n\n if (Object.keys(thisProps).length !== Object.keys(nextProps).length ||\n Object.keys(thisState).length !== Object.keys(nextState).length) &#123;\n return true;\n &#125;\n\n for (const key in nextProps) &#123;\n if (thisProps[key] !== nextProps[key] || ！is(thisProps[key], nextProps[key])) &#123;\n return true;\n &#125;\n &#125;\n\n for (const key in nextState) &#123;\n if (thisState[key] !== nextState[key] || ！is(thisState[key], nextState[key])) &#123;\n return true;\n &#125;\n &#125;\n return false;\n&#125;\n</div></pre></td></tr></table></figure>
+<p>使用 Immutable 后，如下图，当红色节点的 state 变化后，不会再渲染树中的所有节点，而是只渲染图中绿色的部分：<br>你也可以借助 <code>React.addons.PureRenderMixin</code> 或支持 class 语法的 <a href="https://zhuanlan.zhihu.com/%22http://link.zhihu.com/?target=https%3A//github.com/felixgirault/pure-render-decorator%5C%22" target="_blank" rel="external">pure-render-decorator</a> 来实现。<br><strong>setState 的一个技巧</strong></p>
+<p>React 建议把 <code>this.state</code> 当作 Immutable 的，因此修改前需要做一个 deepCopy，显得麻烦：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &apos;_&apos; from &apos;lodash&apos;;\n\nconst Component = React.createClass(&#123;\n getInitialState() &#123;\n return &#123;\n data: &#123; times: 0 &#125;\n &#125;\n &#125;,\n handleAdd() &#123;\n let data = _.cloneDeep(this.state.data);\n data.times = data.times + 1;\n this.setState(&#123; data: data &#125;);\n // 如果上面不做 cloneDeep，下面打印的结果会是已经加 1 后的值。\n console.log(this.state.data.times);\n &#125;\n&#125;\n</div></pre></td></tr></table></figure>
+<p>使用 Immutable 后：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getInitialState() &#123;\n return &#123;\n data: Map(&#123; times: 0 &#125;)\n &#125;\n &#125;,\n handleAdd() &#123;\n this.setState(&#123; data: this.state.data.update(&apos;times&apos;, v =&amp;gt; v + 1) &#125;);\n // 这时的 times 并不会改变\n console.log(this.state.data.get(&apos;times&apos;));\n &#125;\n</div></pre></td></tr></table></figure>
+<p>上面的 <code>handleAdd</code> 可以简写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">handleAdd() &#123;\n this.setState((&#123;data&#125;) =&amp;gt; (&#123;\n data: data.update(&apos;times&apos;, v =&amp;gt; v + 1) &#125;)\n &#125;);\n &#125;\n</div></pre></td></tr></table></figure>
+<ol>
+<li>与 Flux 搭配使用<br>由于 Flux 并没有限定 Store 中数据的类型，使用 Immutable 非常简单。</li>
+</ol>
+<p>现在是实现一个类似带有添加和撤销功能的 Store：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import &#123; Map, OrderedMap &#125; from &apos;immutable&apos;;\nlet todos = OrderedMap();\nlet history = []; // 普通数组，存放每次操作后产生的数据\n\nlet TodoStore = createStore(&#123;\n getAll() &#123; return todos; &#125;\n&#125;);\n\nDispatcher.register(action =&amp;gt; &#123;\n if (action.actionType === &apos;create&apos;) &#123;\n let id = createGUID();\n history.push(todos); // 记录当前操作前的数据，便于撤销\n todos = todos.set(id, Map(&#123;\n id: id,\n complete: false,\n text: action.text.trim()\n &#125;));\n TodoStore.emitChange();\n &#125; else if (action.actionType === &apos;undo&apos;) &#123;\n // 这里是撤销功能实现，\n // 只需从 history 数组中取前一次 todos 即可\n if (history.length &amp;gt; 0) &#123;\n todos = history.pop();\n &#125;\n TodoStore.emitChange();\n &#125;\n&#125;);\n</div></pre></td></tr></table></figure>
+<ol>
+<li>与 Redux 搭配使用</li>
+</ol>
+<p><a href="https://zhuanlan.zhihu.com/%22http://link.zhihu.com/?target=https%3A//github.com/rackt/redux%5C%22" target="_blank" rel="external">Redux</a> 是目前流行的 Flux 衍生库。它简化了 Flux 中多个 Store 的概念，只有一个 Store，数据操作通过 Reducer 中实现；同时它提供更简洁和清晰的单向数据流（View -&gt; Action -&gt; Middleware -&gt; Reducer），也更易于开发同构应用。目前已经在我们项目中大规模使用。</p>
+<p>由于 Redux 中内置的 <code>combineReducers</code> 和 reducer 中的 <code>initialState</code> 都为原生的 Object 对象，所以不能和 Immutable 原生搭配使用。<br>幸运的是，Redux 并不排斥使用 Immutable，可以自己重写 <code>combineReducers</code> 或使用 <a href="https://zhuanlan.zhihu.com/%22http://link.zhihu.com/?target=https%3A//github.com/indexiatech/redux-immutablejs%5C%22" target="_blank" rel="external">redux-immutablejs</a> 来提供支持。<br>上面我们提到 Cursor 可以方便检索和 update 层级比较深的数据，但因为 Redux 中已经有了 select 来做检索，Action 来更新数据，因此 Cursor 在这里就没有用武之地了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Immutable 可以给应用带来极大的性能提升，但是否使用还要看项目情况。由于侵入性较强，新项目引入比较容易，老项目迁移需要评估迁移。对于一些提供给外部使用的公共组件，最好不要把 Immutable 对象直接暴露在对外接口中。</p>
+<p>如果 JS 原生 Immutable 类型会不会太美，被称为 React API 终结者的 Sebastian Markbåge 有一个这样的 <a href="https://zhuanlan.zhihu.com/%22http://link.zhihu.com/?target=https%3A//github.com/sebmarkbage/ecmascript-immutable-data-structures%5C%22" target="_blank" rel="external">提案</a> ，能否通过现在还不确定。不过可以肯定的是 Immutable 会被越来越多的项目使用。<br>&gt; 码这么多字不容易，喜欢就给个赞吧，亲</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/07/24/React native 分辨率适配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1722,159 +1980,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/04/13/abc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ye Wei">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ye Wei's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/13/abc/" itemprop="url">Mac 生成 ssh-key</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-13T22:20:26+08:00">
-                2017-04-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index">
-                    <span itemprop="name">技术</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/04/13/abc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/04/13/abc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>用Git下载代码得步骤<br>1.首先需要创建公钥，在命令行中输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-keygen -t rsa -C &quot;ben@xxx.com&quot;</div></pre></td></tr></table></figure>
-<p>然后输入路径，密码之类的，如果不输入，工程就会保存到根目录下面，密码也为空。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">~/.ssh/id_rsa是私钥，~/.ssh/id_rsa.pub是公钥</div></pre></td></tr></table></figure>
-<p>2.接着打开公钥：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat ~/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
-<p>这里会得到一段很长的编码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCuYZIchz3THIcc/wH0ZB5WZYqe2iBVUNqSzfrgxBvJCZkFHWiUZhA/4omNud/27PVT/FADV9qSvrX7ifP05Cbl6mhE4uJjxOQRNoPdQQcsTEFh5vDvOeiJOT1CoFb9WLGg49Xml4yJmFJqv/Kz5hCe7LEWRYJH6tmaVG0qi9nwAZmjfTQpSWu07eAKB9wAbK6stCdnd5JvMq7IsNNylbwDlXf0RQA4RpppO+14oNBqivhi5ftBPjP15+aWKpnXUxkGMVAefKTvwsyw1T0H2sj+ILVFM4d5xpxu3jPHebqh363OwPPLMsoUy9VhQ3YDtMxt4vyOxvpJ9ekMGlDn/9ut linwenbang@yolanda.hk</div></pre></td></tr></table></figure>
-<p>然后在进入GitLab或者Gitblit的个人中心，选择ssh key的配置，将新生成的ssh-key复制进去即可，配置完成之后即可克隆你想要克隆的项目了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1924,7 +2029,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1946,7 +2051,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
