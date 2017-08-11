@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://weiTimes.github.io/"/>
-  <updated>2017-08-11T02:17:41.000Z</updated>
+  <updated>2017-08-11T02:18:52.000Z</updated>
   <id>https://weiTimes.github.io/</id>
   
   <author>
@@ -16,14 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Mac上设置MySQL默认编码为UTF-8</title>
+    <title>Immutable 详解及 React 中实践</title>
     <link href="https://weiTimes.github.io/2017/08/11/Immutable%20%E8%AF%A6%E8%A7%A3%E5%8F%8A%20React%20%E4%B8%AD%E5%AE%9E%E8%B7%B5/"/>
     <id>https://weiTimes.github.io/2017/08/11/Immutable 详解及 React 中实践/</id>
     <published>2017-08-11T02:09:42.000Z</published>
-    <updated>2017-08-11T02:17:41.000Z</updated>
+    <updated>2017-08-11T02:18:52.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Immutable-详解及-React-中实践-知乎专栏"><a href="#Immutable-详解及-React-中实践-知乎专栏" class="headerlink" title="Immutable 详解及 React 中实践 - 知乎专栏"></a>Immutable 详解及 React 中实践 - 知乎专栏</h1><p>{“database”:{“Post”:{“20295971”:{“title”:”Immutable 详解及 React 中实践”,”author”:”camsong”,”content”:”</p>
-<blockquote>
+    <content type="html"><![CDATA[<h1 id="Immutable-详解及-React-中实践-知乎专栏"><a href="#Immutable-详解及-React-中实践-知乎专栏" class="headerlink" title="Immutable 详解及 React 中实践 - 知乎专栏"></a>Immutable 详解及 React 中实践 - 知乎专栏</h1><blockquote>
 <p>Shared mutable state is the root of all evil（共享的可变状态是万恶之源）  </p>
 <p>– Pete Hunt  </p>
 </blockquote>
