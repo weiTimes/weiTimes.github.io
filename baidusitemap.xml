@@ -4,60 +4,21 @@
 
     
   <url>
-    <loc>https://weiTimes.github.io/2017/08/11/Immutable%20%E8%AF%A6%E8%A7%A3%E5%8F%8A%20React%20%E4%B8%AD%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2017-12-14T01:57:55.512Z</lastmod>
+    <loc>https://weiTimes.github.io/2017/12/14/%E6%95%88%E7%8E%87%E7%A5%9E%E5%99%A8%E4%B9%8BDash%20%E2%80%94%20%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E7%AE%A1%E7%90%86%E5%92%8CApi%E6%96%87%E6%A1%A3%E6%B5%8F%E8%A7%88/</loc>
+    <lastmod>2017-12-14T12:07:57.632Z</lastmod>
     <data>
         <display>
-        <title>Immutable 详解及 React 中实践</title>
-        <pubTime>2017-08-11T02:09:42.000Z</pubTime>
+        <title>效率神器之Dash — 代码片段管理和Api文档浏览</title>
+        <pubTime>2017-12-14T12:07:13.835Z</pubTime>
         
-        <tag>函数式编程</tag>
+        <tag>Mac</tag>
          
-        <tag>React</tag>
+        <tag>效率</tag>
          
          
            
              
-              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-  <url>
-    <loc>https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
-    <lastmod>2017-11-10T06:38:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>React Native问题集锦及解决方案</title>
-        <pubTime>2017-05-16T03:55:50.000Z</pubTime>
-        
-        <tag>React Native</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://weiTimes.github.io/2017/05/25/%E5%89%8D%E7%AB%AF%E5%B7%A5%E4%BD%9C%E6%B5%81/</loc>
-    <lastmod>2017-08-11T01:26:53.000Z</lastmod>
-    <data>
-        <display>
-        <title>前端工作流</title>
-        <pubTime>2017-05-25T06:10:38.000Z</pubTime>
-        
-         
-           
-             
-              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+              <breadCrumb title="工具" url="https://weiTimes.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -66,7 +27,7 @@
     
   <url>
     <loc>https://weiTimes.github.io/2017/07/24/React%20native%20%E5%88%86%E8%BE%A8%E7%8E%87%E9%80%82%E9%85%8D/</loc>
-    <lastmod>2017-07-25T03:38:13.000Z</lastmod>
+    <lastmod>2017-12-14T11:32:56.159Z</lastmod>
     <data>
         <display>
         <title>React native 分辨率适配</title>
@@ -85,50 +46,8 @@
 
     
   <url>
-    <loc>https://weiTimes.github.io/2017/05/17/%E5%9C%A8React%20Native%E4%B8%AD%E7%94%A8WebView%E6%89%93%E5%BC%80%E9%9D%9EHTTPS%E7%9A%84%E7%9A%84%E7%AB%99%E7%82%B9/</loc>
-    <lastmod>2017-05-24T10:56:24.000Z</lastmod>
-    <data>
-        <display>
-        <title>在React Native中用WebView打开非HTTPS的的站点</title>
-        <pubTime>2017-05-17T08:30:39.000Z</pubTime>
-        
-        <tag>React Native</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://weiTimes.github.io/2017/05/20/React%20Native%20Android%20%E4%B8%8E%20IOS%E7%9A%84%E9%80%82%E9%85%8D/</loc>
-    <lastmod>2017-05-20T10:27:50.000Z</lastmod>
-    <data>
-        <display>
-        <title>React Native Android 与 IOS的适配</title>
-        <pubTime>2017-05-20T09:43:07.000Z</pubTime>
-        
-        <tag>React Native</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
-  <url>
     <loc>https://weiTimes.github.io/2017/05/16/%E5%A6%82%E4%BD%95%E5%88%9D%E5%A7%8B%E5%8C%96%E6%9C%AC%E5%9C%B0git%E9%A1%B9%E7%9B%AE%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%85%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</loc>
-    <lastmod>2017-05-16T02:33:06.000Z</lastmod>
+    <lastmod>2017-12-14T11:32:07.397Z</lastmod>
     <data>
         <display>
         <title>如何初始化本地git项目，并将其添加到远程仓库</title>
@@ -147,8 +66,28 @@
 
     
   <url>
+    <loc>https://weiTimes.github.io/2017/05/17/%E5%9C%A8React%20Native%E4%B8%AD%E7%94%A8WebView%E6%89%93%E5%BC%80%E9%9D%9EHTTPS%E7%9A%84%E7%9A%84%E7%AB%99%E7%82%B9/</loc>
+    <lastmod>2017-12-14T11:32:04.402Z</lastmod>
+    <data>
+        <display>
+        <title>在React Native中用WebView打开非HTTPS的的站点</title>
+        <pubTime>2017-05-17T08:30:39.000Z</pubTime>
+        
+        <tag>React Native</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://weiTimes.github.io/2017/05/15/react-native%20%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E4%B8%8E%E9%99%8D%E7%BA%A7/</loc>
-    <lastmod>2017-05-15T13:31:15.000Z</lastmod>
+    <lastmod>2017-12-14T11:31:57.799Z</lastmod>
     <data>
         <display>
         <title>react-native 版本升级与降级</title>
@@ -167,16 +106,14 @@
 
     
   <url>
-    <loc>https://weiTimes.github.io/2017/05/15/MA%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-05-15T03:06:00.000Z</lastmod>
+    <loc>https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2017-12-14T11:31:54.647Z</lastmod>
     <data>
         <display>
-        <title>MAC常用命令</title>
-        <pubTime>2017-05-15T03:00:53.000Z</pubTime>
+        <title>React Native问题集锦及解决方案</title>
+        <pubTime>2017-05-16T03:55:50.000Z</pubTime>
         
-        <tag>Mac</tag>
-         
-        <tag>命令行</tag>
+        <tag>React Native</tag>
          
          
            
@@ -189,50 +126,8 @@
 
     
   <url>
-    <loc>https://weiTimes.github.io/2017/05/15/abc/</loc>
-    <lastmod>2017-05-15T02:59:32.000Z</lastmod>
-    <data>
-        <display>
-        <title>MySQL忘记密码后重置密码( Mac )</title>
-        <pubTime>2017-05-15T02:48:41.000Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://weiTimes.github.io/2017/03/12/abc/</loc>
-    <lastmod>2017-05-15T02:47:21.000Z</lastmod>
-    <data>
-        <display>
-        <title>在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</title>
-        <pubTime>2017-03-12T08:17:38.000Z</pubTime>
-        
-        <tag>MySQL</tag>
-         
-         
-           
-             
-              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-    
-    
-  <url>
-    <loc>https://weiTimes.github.io/2017/03/23/abc/</loc>
-    <lastmod>2017-05-12T09:21:37.000Z</lastmod>
+    <loc>https://weiTimes.github.io/2017/03/23/Mac%E4%B8%8A%E8%AE%BE%E7%BD%AEMySQL%E9%BB%98%E8%AE%A4%E7%BC%96%E7%A0%81%E4%B8%BAUTF-8/</loc>
+    <lastmod>2017-12-14T11:31:32.788Z</lastmod>
     <data>
         <display>
         <title>Mac上设置MySQL默认编码为UTF-8</title>
@@ -253,8 +148,52 @@
 
     
   <url>
-    <loc>https://weiTimes.github.io/2017/04/13/abc/</loc>
-    <lastmod>2017-04-13T14:28:40.000Z</lastmod>
+    <loc>https://weiTimes.github.io/2017/08/11/Immutable%20%E8%AF%A6%E8%A7%A3%E5%8F%8A%20React%20%E4%B8%AD%E5%AE%9E%E8%B7%B5/</loc>
+    <lastmod>2017-12-14T11:31:27.839Z</lastmod>
+    <data>
+        <display>
+        <title>Immutable 详解及 React 中实践</title>
+        <pubTime>2017-08-11T02:09:42.000Z</pubTime>
+        
+        <tag>函数式编程</tag>
+         
+        <tag>React</tag>
+         
+        <tag>Javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://weiTimes.github.io/2017/05/20/React%20Native%20Android%20%E4%B8%8E%20IOS%E7%9A%84%E9%80%82%E9%85%8D/</loc>
+    <lastmod>2017-12-14T11:31:20.862Z</lastmod>
+    <data>
+        <display>
+        <title>React Native Android 与 IOS的适配</title>
+        <pubTime>2017-05-20T09:43:07.000Z</pubTime>
+        
+        <tag>React Native</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://weiTimes.github.io/2017/04/13/Mac%E7%94%9F%E6%88%90%20ssh-key/</loc>
+    <lastmod>2017-12-14T11:16:37.312Z</lastmod>
     <data>
         <display>
         <title>Mac 生成 ssh-key</title>
@@ -275,11 +214,31 @@
 
     
   <url>
-    <loc>https://weiTimes.github.io/2017/04/01/HEXO+Github/</loc>
-    <lastmod>2017-04-01T15:24:12.000Z</lastmod>
+    <loc>https://weiTimes.github.io/2017/05/15/MySQL%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%E5%90%8E%E9%87%8D%E7%BD%AE%E5%AF%86%E7%A0%81(%20Mac%20)/</loc>
+    <lastmod>2017-12-14T11:16:32.051Z</lastmod>
     <data>
         <display>
-        <title>HEXO+Github,搭建属于自己的博客</title>
+        <title>MySQL忘记密码后重置密码( Mac )</title>
+        <pubTime>2017-05-15T02:48:41.000Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://weiTimes.github.io/2017/04/01/Hexo+Github/</loc>
+    <lastmod>2017-12-14T11:16:03.552Z</lastmod>
+    <data>
+        <display>
+        <title>Hexo+Github,搭建属于自己的博客</title>
         <pubTime>2017-04-01T14:44:23.000Z</pubTime>
         
         <tag>Hexo</tag>
@@ -287,10 +246,61 @@
          
            
              
-              <breadCrumb title="blog" url="https://weiTimes.github.io/categories/blog/"/>
+              <breadCrumb title="Blog" url="https://weiTimes.github.io/categories/Blog/"/>
           
         </display>
     </data>
     </url>
 
+    
+  <url>
+    <loc>https://weiTimes.github.io/2017/05/15/Mac%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
+    <lastmod>2017-12-14T11:14:22.434Z</lastmod>
+    <data>
+        <display>
+        <title>Mac常用命令</title>
+        <pubTime>2017-05-15T03:00:53.000Z</pubTime>
+        
+        <tag>Mac</tag>
+         
+        <tag>命令行</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://weiTimes.github.io/2017/03/12/abc/</loc>
+    <lastmod>2017-12-14T11:13:22.134Z</lastmod>
+    <data>
+        <display>
+        <title>在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用</title>
+        <pubTime>2017-03-12T08:17:38.000Z</pubTime>
+        
+        <tag>MySQL</tag>
+         
+        <tag>PHPP</tag>
+         
+        <tag>Apache</tag>
+         
+         
+           
+             
+              <breadCrumb title="技术" url="https://weiTimes.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+    
+    
 </urlset>

@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="React native 分辨率适配React Native 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 PixelRatio: 123import &amp;#123;PixelRatio&amp;#125; from &amp;apos;react-native&amp;apos;;const pt2px = pt=&amp;gt;PixelRatio.getPixelSizeF">
+<meta name="description" content="React Native 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 PixelRatio: 123import &amp;#123;PixelRatio&amp;#125; from &amp;apos;react-native&amp;apos;;const pt2px = pt=&amp;gt;PixelRatio.getPixelSizeForLayoutSize(pt);c">
 <meta name="keywords" content="React Native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React native 分辨率适配">
 <meta property="og:url" content="https://weiTimes.github.io/2017/07/24/React native 分辨率适配/index.html">
 <meta property="og:site_name" content="Ye Wei&#39;s blog">
-<meta property="og:description" content="React native 分辨率适配React Native 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 PixelRatio: 123import &amp;#123;PixelRatio&amp;#125; from &amp;apos;react-native&amp;apos;;const pt2px = pt=&amp;gt;PixelRatio.getPixelSizeF">
+<meta property="og:description" content="React Native 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 PixelRatio: 123import &amp;#123;PixelRatio&amp;#125; from &amp;apos;react-native&amp;apos;;const pt2px = pt=&amp;gt;PixelRatio.getPixelSizeForLayoutSize(pt);c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-25T03:38:13.000Z">
+<meta property="og:updated_time" content="2017-12-14T11:32:56.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React native 分辨率适配">
-<meta name="twitter:description" content="React native 分辨率适配React Native 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 PixelRatio: 123import &amp;#123;PixelRatio&amp;#125; from &amp;apos;react-native&amp;apos;;const pt2px = pt=&amp;gt;PixelRatio.getPixelSizeF">
+<meta name="twitter:description" content="React Native 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 PixelRatio: 123import &amp;#123;PixelRatio&amp;#125; from &amp;apos;react-native&amp;apos;;const pt2px = pt=&amp;gt;PixelRatio.getPixelSizeForLayoutSize(pt);c">
 
 
 
@@ -363,7 +363,7 @@
       
 
       
-        <h1 id="React-native-分辨率适配"><a href="#React-native-分辨率适配" class="headerlink" title="React native 分辨率适配"></a>React native 分辨率适配</h1><p><a href="http://facebook.github.io/react-native/" target="_blank" rel="noopener">React Native</a> 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 <a href="https://facebook.github.io/react-native/docs/pixelratio.html" target="_blank" rel="noopener">PixelRatio</a>:</p>
+        <p><a href="http://facebook.github.io/react-native/" target="_blank" rel="noopener">React Native</a> 中使用的尺寸单位是pt，是一个绝对长度，而设计师使用的是px, 这两种尺寸如何换算呢？官方提供了 <a href="https://facebook.github.io/react-native/docs/pixelratio.html" target="_blank" rel="noopener">PixelRatio</a>:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123;PixelRatio&#125; from &apos;react-native&apos;;</span><br><span class="line">const pt2px = pt=&gt;PixelRatio.getPixelSizeForLayoutSize(pt);</span><br><span class="line">const px2pt = px=&gt;PixelRatio.roundToNearestPixel(px);</span><br></pre></td></tr></table></figure>
 <p>设计师给你一个尺寸，比如100px*200px的View，按照下面的方式可实现设计还原：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;View style=&#123;&#123;width:px2pt(100),height:px2pt(200),backgroundColor:&quot;red&quot;&#125;&#125;/&gt;</span><br></pre></td></tr></table></figure>
@@ -371,6 +371,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123;PixelRatio,Dimensions&#125;&#125; from &apos;react-native&apos;;</span><br><span class="line">const pt2px = pt=&gt;PixelRatio.getPixelSizeForLayoutSize(pt);</span><br><span class="line">const px2pt = px=&gt;PixelRatio.roundToNearestPixel(px); let pxRatio = PixelRatio.get();</span><br><span class="line">let &#123;win_width,win_height&#125; = Dimensions.get(&quot;window&quot;); let scale = 1/pxRatio;</span><br><span class="line">let width = pt2px(win_width);</span><br><span class="line">let height = pt2px(win_height);</span><br><span class="line">const com = props=&gt;( &lt;View sytle=&#123;styles.container&#125;&gt; &lt;View style=&#123;&#123;width:100,height:200,backgroundColor:&quot;red&quot;&#125;&#125;/&gt; &lt;/View&gt;) const styles=&#123; container: &#123; width:width, height:height, transform:[&#123;translateX:-width*.5&#125;, &#123;translateY:-height*.5&#125;, &#123;scale:scale&#125;, &#123;translateX:width*.5&#125;, &#123;translateY:height*.5&#125;] &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样处理后，在根节点内，你再也不用考虑pt的问题了，直接使用px即可。</p>
 <p>不过此时还有另外一个问题，设计尺寸是死的，屏幕大小是活的，得考虑分辨率适配啊，那在不同的分辨率下如何正确的实现设计师的设计呢？</p>
+<a id="more"></a>
 <p>我们将使用一种游戏经常会用到得方案，fixedWidth/fixedHeight.</p>
 <blockquote>
 <p>fixedWidth 模式是保持原始宽高比缩放应用程序内容，缩放后应用程序内容在水平和垂直方向都填满播放器窗口，但只保持应用程序内容的原始宽度不变，高度可能会改变,简言之 <strong>宽度固定，高度自适应</strong> 。  </p>
@@ -453,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/25/前端工作流/" rel="next" title="前端工作流">
-                <i class="fa fa-chevron-left"></i> 前端工作流
+              <a href="/2017/05/20/React Native Android 与 IOS的适配/" rel="next" title="React Native Android 与 IOS的适配">
+                <i class="fa fa-chevron-left"></i> React Native Android 与 IOS的适配
               </a>
             
           </div>
@@ -555,7 +556,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -566,7 +567,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -628,7 +629,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#React-native-分辨率适配"><span class="nav-number">1.</span> <span class="nav-text"><a href="#React-native-&#x5206;&#x8FA8;&#x7387;&#x9002;&#x914D;" class="headerlink" title="React native &#x5206;&#x8FA8;&#x7387;&#x9002;&#x914D;"></a>React native &#x5206;&#x8FA8;&#x7387;&#x9002;&#x914D;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#fixedHeight"><span class="nav-number">1.0.1.</span> <span class="nav-text"><a href="#fixedHeight" class="headerlink" title="fixedHeight"></a>fixedHeight</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#fixedHeight"><span class="nav-number">1.</span> <span class="nav-text"><a href="#fixedHeight" class="headerlink" title="fixedHeight"></a>fixedHeight</span></a></li></ol></div>
             
 
           </div>

@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Mac,MySQL," />
+  <meta name="keywords" content="MySQL," />
 
 
 
@@ -92,18 +92,20 @@
 
 
 
-<meta name="description" content="登录mysql终端，然后输入下面内容，查看该数据库连接使用的字符集的情况  1show variables like &amp;apos;%char%&amp;apos;;  进入到 /usr/local/mysql/support-files 目录，可以看到里面有个文件: my-default.cnf 将其复制到桌面上，改名为 my.cnf. 用你喜欢的编辑器将内容替换为:  1234567891011121">
-<meta name="keywords" content="Mac,MySQL">
+<meta name="description" content="安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。     这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac上设置MySQL默认编码为UTF-8">
-<meta property="og:url" content="https://weiTimes.github.io/2017/03/23/abc/index.html">
+<meta property="og:title" content="MySQL忘记密码后重置密码( Mac )">
+<meta property="og:url" content="https://weiTimes.github.io/2017/05/15/MySQL忘记密码后重置密码( Mac )/index.html">
 <meta property="og:site_name" content="Ye Wei&#39;s blog">
-<meta property="og:description" content="登录mysql终端，然后输入下面内容，查看该数据库连接使用的字符集的情况  1show variables like &amp;apos;%char%&amp;apos;;  进入到 /usr/local/mysql/support-files 目录，可以看到里面有个文件: my-default.cnf 将其复制到桌面上，改名为 my.cnf. 用你喜欢的编辑器将内容替换为:  1234567891011121">
+<meta property="og:description" content="安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。     这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-05-12T09:21:37.000Z">
+<meta property="og:image" content="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&v=8fe78e62">
+<meta property="og:updated_time" content="2017-12-14T11:16:32.051Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac上设置MySQL默认编码为UTF-8">
-<meta name="twitter:description" content="登录mysql终端，然后输入下面内容，查看该数据库连接使用的字符集的情况  1show variables like &amp;apos;%char%&amp;apos;;  进入到 /usr/local/mysql/support-files 目录，可以看到里面有个文件: my-default.cnf 将其复制到桌面上，改名为 my.cnf. 用你喜欢的编辑器将内容替换为:  1234567891011121">
+<meta name="twitter:title" content="MySQL忘记密码后重置密码( Mac )">
+<meta name="twitter:description" content="安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。     这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。">
+<meta name="twitter:image" content="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&v=8fe78e62">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://weiTimes.github.io/2017/03/23/abc/"/>
+  <link rel="canonical" href="https://weiTimes.github.io/2017/05/15/MySQL忘记密码后重置密码( Mac )/"/>
 
 
 
 
 
-  <title>Mac上设置MySQL默认编码为UTF-8 | Ye Wei's blog</title>
+  <title>MySQL忘记密码后重置密码( Mac ) | Ye Wei's blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/03/23/abc/">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/15/MySQL忘记密码后重置密码( Mac )/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Wei">
@@ -283,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac上设置MySQL默认编码为UTF-8</h1>
+          <h1 class="post-title" itemprop="name headline">MySQL忘记密码后重置密码( Mac )</h1>
         
 
         <div class="post-meta">
@@ -295,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T18:44:29+08:00">
-                2017-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-15T10:48:41+08:00">
+                2017-05-15
               </time>
             
 
@@ -336,9 +338,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/03/23/abc/#comments" itemprop="discussionUrl">
+                <a href="/2017/05/15/MySQL忘记密码后重置密码( Mac )/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/03/23/abc/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017/05/15/MySQL忘记密码后重置密码( Mac )/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -363,19 +365,47 @@
       
 
       
-        <ol>
-<li>登录mysql终端，然后输入下面内容，查看该数据库连接使用的字符集的情况</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like &apos;%char%&apos;;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>进入到 /usr/local/mysql/support-files 目录，可以看到里面有个文件: my-default.cnf</li>
-<li>将其复制到桌面上，改名为 my.cnf. 用你喜欢的编辑器将内容替换为:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"># Example MySQL config file for small systems.</span><br><span class="line">#</span><br><span class="line"># This is for a system with little memory (&lt;= 64M) where MySQL is only used</span><br><span class="line"># from time to time and it&apos;s important that the mysqld daemon</span><br><span class="line"># doesn&apos;t use much resources.</span><br><span class="line">#</span><br><span class="line"># MySQL programs look for option files in a set of</span><br><span class="line"># locations which depend on the deployment platform.</span><br><span class="line"># You can copy this option file to one of those</span><br><span class="line"># locations. For information about these locations, see:</span><br><span class="line"># http://dev.mysql.com/doc/mysql/en/option-files.html</span><br><span class="line">#</span><br><span class="line"># In this file, you can use all long options that a program supports.</span><br><span class="line"># If you want to know which options a program supports, run the program</span><br><span class="line"># with the &quot;--help&quot; option.</span><br><span class="line"></span><br><span class="line"># The following options will be passed to all MySQL clients</span><br><span class="line">[client]</span><br><span class="line">default-character-set=utf8</span><br><span class="line">#password   = your_password</span><br><span class="line">port        = 3306</span><br><span class="line">socket      = /tmp/mysql.sock</span><br><span class="line"></span><br><span class="line"># Here follows entries for some specific programs</span><br><span class="line"></span><br><span class="line"># The MySQL server</span><br><span class="line">[mysqld]</span><br><span class="line">default-storage-engine=INNODB</span><br><span class="line">character-set-server=utf8</span><br><span class="line">collation-server=utf8_general_ci</span><br><span class="line">port        = 3306</span><br><span class="line">socket      = /tmp/mysql.sock</span><br><span class="line">skip-external-locking</span><br><span class="line">key_buffer_size = 16K</span><br><span class="line">max_allowed_packet = 1M</span><br><span class="line">table_open_cache = 4</span><br><span class="line">sort_buffer_size = 64K</span><br><span class="line">read_buffer_size = 256K</span><br><span class="line">read_rnd_buffer_size = 256K</span><br><span class="line">net_buffer_length = 2K</span><br><span class="line">thread_stack = 128K</span><br><span class="line"></span><br><span class="line"># Don&apos;t listen on a TCP/IP port at all. This can be a security enhancement,</span><br><span class="line"># if all processes that need to connect to mysqld run on the same host.</span><br><span class="line"># All interaction with mysqld must be made via Unix sockets or named pipes.</span><br><span class="line"># Note that using this option without enabling named pipes on Windows</span><br><span class="line"># (using the &quot;enable-named-pipe&quot; option) will render mysqld useless!</span><br><span class="line">#</span><br><span class="line">#skip-networking</span><br><span class="line">server-id   = 1</span><br><span class="line"></span><br><span class="line"># Uncomment the following if you want to log updates</span><br><span class="line">#log-bin=mysql-bin</span><br><span class="line"></span><br><span class="line"># binary logging format - mixed recommended</span><br><span class="line">#binlog_format=mixed</span><br><span class="line"></span><br><span class="line"># Causes updates to non-transactional engines using statement format to be</span><br><span class="line"># written directly to binary log. Before using this option make sure that</span><br><span class="line"># there are no dependencies between transactional and non-transactional</span><br><span class="line"># tables such as in the statement INSERT INTO t_myisam SELECT * FROM</span><br><span class="line"># t_innodb; otherwise, slaves may diverge from the master.</span><br><span class="line">#binlog_direct_non_transactional_updates=TRUE</span><br><span class="line"></span><br><span class="line"># Uncomment the following if you are using InnoDB tables</span><br><span class="line">#innodb_data_home_dir = /usr/local/mysql/data</span><br><span class="line">#innodb_data_file_path = ibdata1:10M:autoextend</span><br><span class="line">#innodb_log_group_home_dir = /usr/local/mysql/data</span><br><span class="line"># You can set .._buffer_pool_size up to 50 - 80 %</span><br><span class="line"># of RAM but beware of setting memory usage too high</span><br><span class="line">#innodb_buffer_pool_size = 16M</span><br><span class="line">#innodb_additional_mem_pool_size = 2M</span><br><span class="line"># Set .._log_file_size to 25 % of buffer pool size</span><br><span class="line">#innodb_log_file_size = 5M</span><br><span class="line">#innodb_log_buffer_size = 8M</span><br><span class="line">#innodb_flush_log_at_trx_commit = 1</span><br><span class="line">#innodb_lock_wait_timeout = 50</span><br><span class="line"></span><br><span class="line">[mysqldump]</span><br><span class="line">quick</span><br><span class="line">max_allowed_packet = 16M</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">no-auto-rehash</span><br><span class="line"># Remove the next comment character if you are not familiar with SQL</span><br><span class="line">#safe-updates</span><br><span class="line"></span><br><span class="line">[myisamchk]</span><br><span class="line">key_buffer_size = 8M</span><br><span class="line">sort_buffer_size = 8M</span><br><span class="line"></span><br><span class="line">[mysqlhotcopy]</span><br><span class="line">interactive-timeout</span><br></pre></td></tr></table></figure>
-<ol>
-<li>将修改后的文件 my.cnf 复制到 /etc 目录下</li>
-<li>重启mysql</li>
-</ol>
+        <blockquote>
+<p>安装好MySQL以后，系统给了个默认的的密码，当时是第一次在Mac上安装，所以忽略了，后来登录MySQL的时候需要用到密码，但不知道密码，所以得修改这个密码了，然后就走上了不归路。</p>
+</blockquote>
+<p>   这个过程是心酸的，网上的资料多如狗，关键是各有各的错法，尝试了半天没一个对的，在即将打破心理防线，要去翻MySQL文档的时候，成功了有没有。没有一个文章告诉我完整的答案，我是参考了好几个攻略，闭门造出来的车。给自己点赞。不多说了，一步一步跟我</p>
+<ul>
+<li>走关闭MySQL服务器</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/local/mysql/support-files/mysql.server stop</span><br></pre></td></tr></table></figure>
+<p>或者在偏好设置里点击MySQL然后将其关闭</p>
+<ul>
+<li>进入MySQL的二进制命令目录下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/bin</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取MySQL操作权限</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>重启MySQL服务器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./mysqld_safe --skip-grant-tables</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重开个终端</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>为了在终端可以使用MySQL的命令，需要配置一下，运行下面两条命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alias mysql=/usr/local/mysql/bin/mysql</span><br><span class="line">alias mysqladmin=/usr/local/mysql/bin/mysqladminx</span><br></pre></td></tr></table></figure>
+<p>使用这种方法进行配置，一旦终端关闭了，就又得重新配置了，最好的方法是将MySQL的bin目录加入系统PATH，我用的终端是zsh，所以讲命令配置在.zshrc，如果是其他终端，修改的是相应的文件( 例如：bash -&gt; ./.bashrc )</p>
+<p>打开.zshrc, 添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/mysql/bin</span><br></pre></td></tr></table></figure></p>
+<p>执行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./.zshrc</span><br></pre></td></tr></table></figure></p>
+<p>输入mysql 进入mysql命令模式</p>
+<p>输入use mysql 进入mysql数据库</p>
+<p>输入flush privileges 获取修改密码的权限</p>
+<p>输入set password for ‘root’@’localhost’=password(‘新密码’) 修改密码</p>
+<p>恭喜你，密码修改成功</p>
+<p>使用新密码登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>回车后输入新密码<br><img src="https://d3dr1ze7164817.cloudfront.net/items/0U1e0U1E0K2Z2c2i3103/Image%202017-03-12%20at%203.31.50%20%E4%B8%8B%E5%8D%88.png?X-CloudApp-Visitor-Id=47b8b2f14d7cdbb2f690679600100122&amp;v=8fe78e62" alt=""></p>
+<p>出现上面这个就说明成功登录MySQL</p>
 
       
     </div>
@@ -421,8 +451,6 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mac/" rel="tag"># Mac</a>
-          
             <a href="/tags/MySQL/" rel="tag"># MySQL</a>
           
         </div>
@@ -436,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/12/abc/" rel="next" title="在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用">
-                <i class="fa fa-chevron-left"></i> 在Macbook Pro配置Apache + PHP + MySQL开发环境以及MySql的简单使用
+              <a href="/2017/04/13/Mac生成 ssh-key/" rel="next" title="Mac 生成 ssh-key">
+                <i class="fa fa-chevron-left"></i> Mac 生成 ssh-key
               </a>
             
           </div>
@@ -446,8 +474,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/01/HEXO+Github/" rel="prev" title="HEXO+Github,搭建属于自己的博客">
-                HEXO+Github,搭建属于自己的博客 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/15/Mac常用命令/" rel="prev" title="Mac常用命令">
+                Mac常用命令 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -529,7 +557,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -540,7 +568,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -736,9 +764,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://weiTimes.github.io/2017/03/23/abc/';
-          this.page.identifier = '2017/03/23/abc/';
-          this.page.title = 'Mac上设置MySQL默认编码为UTF-8';
+          this.page.url = 'https://weiTimes.github.io/2017/05/15/MySQL忘记密码后重置密码( Mac )/';
+          this.page.identifier = '2017/05/15/MySQL忘记密码后重置密码( Mac )/';
+          this.page.title = 'MySQL忘记密码后重置密码( Mac )';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://yewei.disqus.com/embed.js';

@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="在React Native中用WebView打开非HTTPS的的站点 在React Native应用中使用WebView可以复用已经写好的web页面。  在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术 让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点">
+<meta name="description" content="在React Native应用中使用WebView可以复用已经写好的web页面。  在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术 让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点 1234567&amp;lt;WebView contentInset=&amp;">
 <meta name="keywords" content="React Native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在React Native中用WebView打开非HTTPS的的站点">
 <meta property="og:url" content="https://weiTimes.github.io/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/index.html">
 <meta property="og:site_name" content="Ye Wei&#39;s blog">
-<meta property="og:description" content="在React Native中用WebView打开非HTTPS的的站点 在React Native应用中使用WebView可以复用已经写好的web页面。  在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术 让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点">
+<meta property="og:description" content="在React Native应用中使用WebView可以复用已经写好的web页面。  在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术 让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点 1234567&amp;lt;WebView contentInset=&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-05-24T10:56:24.000Z">
+<meta property="og:updated_time" content="2017-12-14T11:32:04.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在React Native中用WebView打开非HTTPS的的站点">
-<meta name="twitter:description" content="在React Native中用WebView打开非HTTPS的的站点 在React Native应用中使用WebView可以复用已经写好的web页面。  在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术 让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点">
+<meta name="twitter:description" content="在React Native应用中使用WebView可以复用已经写好的web页面。  在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术 让我们看一下这个以下操作。这里我们尝试在WebView中访问HTTP的站点 1234567&amp;lt;WebView contentInset=&amp;">
 
 
 
@@ -363,7 +363,7 @@
       
 
       
-        <h2 id="在React-Native中用WebView打开非HTTPS的的站点"><a href="#在React-Native中用WebView打开非HTTPS的的站点" class="headerlink" title="在React Native中用WebView打开非HTTPS的的站点"></a>在React Native中用WebView打开非HTTPS的的站点</h2><blockquote>
+        <blockquote>
 <p>在React Native应用中使用WebView可以复用已经写好的web页面。</p>
 </blockquote>
 <p><em>在如果我们的应用在IOS9或者更高的版本中使用WebView尝试连接任何的HTTP服务，将会请求失败，也就不能成功地载入web页面，因为HTTP服务不支持最新的SSL技术</em></p>
@@ -373,6 +373,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Error Loading Page</span><br><span class="line">Domain: NSURLErrorDomain</span><br><span class="line">Error Code: -1022</span><br><span class="line">Description: The resource could not be loaded because</span><br><span class="line">the App Transport Security policy requires the use of a</span><br><span class="line">secure connection</span><br></pre></td></tr></table></figure>
 <p>理想情况下，这个站点会尝试去连接HTTPS服务。然而，该站点HTTPS服务可能没有被启用或者不支持。</p>
 <p>例如，我们在开发app的过程中，可能会想要去连接HTTP的服务。</p>
+<a id="more"></a>
 <h3 id="使用Xcode-将使用的站点服务加入白名单"><a href="#使用Xcode-将使用的站点服务加入白名单" class="headerlink" title="使用Xcode-将使用的站点服务加入白名单"></a>使用Xcode-将使用的站点服务加入白名单</h3><p><strong>为了在WebView中访问HTTP站点，我们需要在Xcode中打开项目，然后打开 <code>Info.plist</code> file</strong></p>
 <p>在打开的列表中，我们可以找到<code>App Transport Security Settings</code></p>
 <p>当我们展开找到的这一项时，可以看到在<code>Exception Domains</code>中的<code>localhost</code>，在<code>localhost</code>的展开项中有<code>NSTemporaryExceptionAllowsInsecureHTTPLoads</code>，而且它的value值是<code>true</code></p>
@@ -547,7 +548,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -558,7 +559,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -620,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在React-Native中用WebView打开非HTTPS的的站点"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5728;React-Native&#x4E2D;&#x7528;WebView&#x6253;&#x5F00;&#x975E;HTTPS&#x7684;&#x7684;&#x7AD9;&#x70B9;" class="headerlink" title="&#x5728;React Native&#x4E2D;&#x7528;WebView&#x6253;&#x5F00;&#x975E;HTTPS&#x7684;&#x7684;&#x7AD9;&#x70B9;"></a>&#x5728;React Native&#x4E2D;&#x7528;WebView&#x6253;&#x5F00;&#x975E;HTTPS&#x7684;&#x7684;&#x7AD9;&#x70B9;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Xcode-将使用的站点服务加入白名单"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;Xcode-&#x5C06;&#x4F7F;&#x7528;&#x7684;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;" class="headerlink" title="&#x4F7F;&#x7528;Xcode-&#x5C06;&#x4F7F;&#x7528;&#x7684;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;"></a>&#x4F7F;&#x7528;Xcode-&#x5C06;&#x4F7F;&#x7528;&#x7684;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Xcode-将所有站点服务加入白名单"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;Xcode-&#x5C06;&#x6240;&#x6709;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;" class="headerlink" title="&#x4F7F;&#x7528;Xcode-&#x5C06;&#x6240;&#x6709;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;"></a>&#x4F7F;&#x7528;Xcode-&#x5C06;&#x6240;&#x6709;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#" class="headerlink" title=" "></a> </span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Xcode-将使用的站点服务加入白名单"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;Xcode-&#x5C06;&#x4F7F;&#x7528;&#x7684;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;" class="headerlink" title="&#x4F7F;&#x7528;Xcode-&#x5C06;&#x4F7F;&#x7528;&#x7684;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;"></a>&#x4F7F;&#x7528;Xcode-&#x5C06;&#x4F7F;&#x7528;&#x7684;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Xcode-将所有站点服务加入白名单"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;Xcode-&#x5C06;&#x6240;&#x6709;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;" class="headerlink" title="&#x4F7F;&#x7528;Xcode-&#x5C06;&#x6240;&#x6709;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;"></a>&#x4F7F;&#x7528;Xcode-&#x5C06;&#x6240;&#x6709;&#x7AD9;&#x70B9;&#x670D;&#x52A1;&#x52A0;&#x5165;&#x767D;&#x540D;&#x5355;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x603B;&#x7ED3;" class="headerlink" title="&#x603B;&#x7ED3;"></a>&#x603B;&#x7ED3;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text"><a href="#" class="headerlink" title=" "></a> </span></a></li></ol></div>
             
 
           </div>
