@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <loc>https://weiTimes.github.io/2017/08/11/Immutable%20%E8%AF%A6%E8%A7%A3%E5%8F%8A%20React%20%E4%B8%AD%E5%AE%9E%E8%B7%B5/</loc>
     
-    <lastmod>2017-11-10T06:38:32.000Z</lastmod>
+    <lastmod>2017-12-14T01:57:55.512Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://weiTimes.github.io/2017/08/11/Immutable%20%E8%AF%A6%E8%A7%A3%E5%8F%8A%20React%20%E4%B8%AD%E5%AE%9E%E8%B7%B5/</loc>
+    <loc>https://weiTimes.github.io/404.html</loc>
     
-    <lastmod>2017-08-11T02:19:57.000Z</lastmod>
+    <lastmod>2017-12-14T01:16:52.941Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    
+    <lastmod>2017-11-10T06:38:32.000Z</lastmod>
     
   </url>
   

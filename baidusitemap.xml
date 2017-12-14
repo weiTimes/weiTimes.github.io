@@ -4,14 +4,16 @@
 
     
   <url>
-    <loc>https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
-    <lastmod>2017-11-10T06:38:32.000Z</lastmod>
+    <loc>https://weiTimes.github.io/2017/08/11/Immutable%20%E8%AF%A6%E8%A7%A3%E5%8F%8A%20React%20%E4%B8%AD%E5%AE%9E%E8%B7%B5/</loc>
+    <lastmod>2017-12-14T01:57:55.512Z</lastmod>
     <data>
         <display>
-        <title>React Native问题集锦及解决方案</title>
-        <pubTime>2017-05-16T03:55:50.000Z</pubTime>
+        <title>Immutable 详解及 React 中实践</title>
+        <pubTime>2017-08-11T02:09:42.000Z</pubTime>
         
-        <tag>React Native</tag>
+        <tag>函数式编程</tag>
+         
+        <tag>React</tag>
          
          
            
@@ -23,17 +25,16 @@
     </url>
 
     
+    
   <url>
-    <loc>https://weiTimes.github.io/2017/08/11/Immutable%20%E8%AF%A6%E8%A7%A3%E5%8F%8A%20React%20%E4%B8%AD%E5%AE%9E%E8%B7%B5/</loc>
-    <lastmod>2017-08-11T02:19:57.000Z</lastmod>
+    <loc>https://weiTimes.github.io/2017/05/16/React%20Native%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2017-11-10T06:38:32.000Z</lastmod>
     <data>
         <display>
-        <title>Immutable 详解及 React 中实践</title>
-        <pubTime>2017-08-11T02:09:42.000Z</pubTime>
+        <title>React Native问题集锦及解决方案</title>
+        <pubTime>2017-05-16T03:55:50.000Z</pubTime>
         
-        <tag>函数式编程</tag>
-         
-        <tag>React</tag>
+        <tag>React Native</tag>
          
          
            
