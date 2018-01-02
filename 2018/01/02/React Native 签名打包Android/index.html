@@ -92,18 +92,22 @@
 
 
 
-<meta name="description" content="React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解  导航栏的高度 ios: 44 android: 50 状态栏的高度 ios: 20 android: 0 阴影效果(样式) ios: s">
+<meta name="description" content="按照React Native官方的5步曲:  在终端里面,cd 到项目的根目录后.执行下面这行命令:  1keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000 然后终端就会让你输入口令等信息. 如:   执行第一步会在根目录">
 <meta name="keywords" content="React Native">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React Native Android 与 IOS的适配">
-<meta property="og:url" content="https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/index.html">
+<meta property="og:title" content="React Native 签名打包Android">
+<meta property="og:url" content="https://weiTimes.github.io/2018/01/02/React Native 签名打包Android/index.html">
 <meta property="og:site_name" content="Ye Wei&#39;s blog">
-<meta property="og:description" content="React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解  导航栏的高度 ios: 44 android: 50 状态栏的高度 ios: 20 android: 0 阴影效果(样式) ios: s">
+<meta property="og:description" content="按照React Native官方的5步曲:  在终端里面,cd 到项目的根目录后.执行下面这行命令:  1keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000 然后终端就会让你输入口令等信息. 如:   执行第一步会在根目录">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-14T11:31:20.862Z">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fn2ddug6yxj31kw0jfjy0.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fn2dfwt71tj30hd09pq3x.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fn2digdm05j30db0ffmy1.jpg">
+<meta property="og:updated_time" content="2018-01-02T09:08:36.483Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React Native Android 与 IOS的适配">
-<meta name="twitter:description" content="React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解  导航栏的高度 ios: 44 android: 50 状态栏的高度 ios: 20 android: 0 阴影效果(样式) ios: s">
+<meta name="twitter:title" content="React Native 签名打包Android">
+<meta name="twitter:description" content="按照React Native官方的5步曲:  在终端里面,cd 到项目的根目录后.执行下面这行命令:  1keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000 然后终端就会让你输入口令等信息. 如:   执行第一步会在根目录">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fn2ddug6yxj31kw0jfjy0.jpg">
 
 
 
@@ -131,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/"/>
+  <link rel="canonical" href="https://weiTimes.github.io/2018/01/02/React Native 签名打包Android/"/>
 
 
 
 
 
-  <title>React Native Android 与 IOS的适配 | Ye Wei's blog</title>
+  <title>React Native 签名打包Android | Ye Wei's blog</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/">
+    <link itemprop="mainEntityOfPage" href="https://weiTimes.github.io/2018/01/02/React Native 签名打包Android/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ye Wei">
@@ -283,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">React Native Android 与 IOS的适配</h1>
+          <h1 class="post-title" itemprop="name headline">React Native 签名打包Android</h1>
         
 
         <div class="post-meta">
@@ -295,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-20T17:43:07+08:00">
-                2017-05-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T16:58:40+08:00">
+                2018-01-02
               </time>
             
 
@@ -336,9 +340,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/05/20/React Native Android 与 IOS的适配/#comments" itemprop="discussionUrl">
+                <a href="/2018/01/02/React Native 签名打包Android/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/05/20/React Native Android 与 IOS的适配/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/01/02/React Native 签名打包Android/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -363,21 +367,33 @@
       
 
       
-        <blockquote>
-<p>React Native代码的可重用度极高，一般来说在90%以上，即Android, IOS可共用一套代码，不过还是有些地方需要对两个平台的适配作一个处理的，例如顶部导航栏的高度、阴影效果的处理等等，需要我们对官方提供的组件或者是两个平台的运行效果有一定了解</p>
-</blockquote>
-<p><strong>导航栏的高度</strong></p>
-<p><em>ios: 44</em></p>
-<p><em>android: 50</em></p>
-<p><strong>状态栏的高度</strong></p>
-<p><em>ios: 20</em></p>
-<p><em>android: 0</em></p>
-<p><strong>阴影效果(样式)</strong></p>
-<p><em>ios: shadowOffset, shadowRadius</em></p>
-<p><em>android: elevation</em></p>
-<p><strong>ListView中的RefreshControl(刷新器)的颜色</strong></p>
-<p><em>ios: tintColor</em></p>
-<p><em>android: colors</em></p>
+        <p>按照React Native官方的<a href="http://reactnative.cn/docs/0.45/signed-apk-android.html#content" target="_blank" rel="noopener">5步曲</a>:</p>
+<ol>
+<li>在终端里面,cd 到项目的根目录后.执行下面这行命令:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -keystore my-release-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000</span><br></pre></td></tr></table></figure>
+<p>然后终端就会让你输入口令等信息. 如:</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fn2ddug6yxj31kw0jfjy0.jpg" alt=""></p>
+<ol>
+<li>执行第一步会在根目录下会生成一个XXXXXX.keystore的文件,直接拿到android/app下.</li>
+</ol>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn2dfwt71tj30hd09pq3x.jpg" alt=""></p>
+<ol>
+<li>在android/gradle.properties中加入:</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MYAPP_RELEASE_STORE_FILE=my-release-key.keystore</span><br><span class="line"></span><br><span class="line">MYAPP_RELEASE_KEY_ALIAS=my-key-alias</span><br><span class="line"></span><br><span class="line">MYAPP_RELEASE_STORE_PASSWORD=******</span><br><span class="line"></span><br><span class="line">MYAPP_RELEASE_KEY_PASSWORD=******</span><br></pre></td></tr></table></figure>
+<p><strong>**</strong>换为你刚才输入的口令.</p>
+<ol>
+<li>在android/app/build.gradle添加下面的红色字.</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">def enableProguardInReleaseBuilds = <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">...</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">....</span><br><span class="line">    &#125;</span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">    release &#123;</span><br><span class="line">    <span class="function">storeFile <span class="title">file</span><span class="params">(MYAPP_RELEASE_STORE_FILE)</span></span></span><br><span class="line"><span class="function">    storePassword MYAPP_RELEASE_STORE_PASSWORD</span></span><br><span class="line"><span class="function">    keyAlias MYAPP_RELEASE_KEY_ALIAS</span></span><br><span class="line"><span class="function">    keyPassword MYAPP_RELEASE_KEY_PASSWORD</span></span><br><span class="line"><span class="function">    &#125;&#125;</span></span><br><span class="line"><span class="function">    splits </span>&#123;</span><br><span class="line">....</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">           ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  .....</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>终端cd 到android目录下.执行命令</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew assembleRelease</span><br></pre></td></tr></table></figure>
+<p>等一下终端执行后显示BUILD SUCCESSFUL.</p>
+<p>成功打好了.在项目的android/app/outputs/apk下可见刚才打好的apk包.</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fn2digdm05j30db0ffmy1.jpg" alt=""></p>
 
       
     </div>
@@ -436,8 +452,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/17/在React Native中用WebView打开非HTTPS的的站点/" rel="next" title="在React Native中用WebView打开非HTTPS的的站点">
-                <i class="fa fa-chevron-left"></i> 在React Native中用WebView打开非HTTPS的的站点
+              <a href="/2017/12/15/在 Chrome 里用「Alfred」是什么体验？Steward 把效率启动器带进了浏览器/" rel="next" title="在 Chrome 里用「Alfred」是什么体验？Steward 把效率启动器带进了浏览器">
+                <i class="fa fa-chevron-left"></i> 在 Chrome 里用「Alfred」是什么体验？Steward 把效率启动器带进了浏览器
               </a>
             
           </div>
@@ -445,10 +461,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/24/React native 分辨率适配/" rel="prev" title="React native 分辨率适配">
-                React native 分辨率适配 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -736,9 +748,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://weiTimes.github.io/2017/05/20/React Native Android 与 IOS的适配/';
-          this.page.identifier = '2017/05/20/React Native Android 与 IOS的适配/';
-          this.page.title = 'React Native Android 与 IOS的适配';
+          this.page.url = 'https://weiTimes.github.io/2018/01/02/React Native 签名打包Android/';
+          this.page.identifier = '2018/01/02/React Native 签名打包Android/';
+          this.page.title = 'React Native 签名打包Android';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://yewei.disqus.com/embed.js';
